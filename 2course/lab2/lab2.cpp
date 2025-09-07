@@ -1,7 +1,7 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
-#include <memory>
+
 #include <compare> 
 #include <cstring>
 
@@ -10,14 +10,18 @@ using namespace std;
 class String {
 private:
 	int length;
-	unique_ptr<char[]> string;
+	char* string;
 public:
-	String() : length(0), string(make_unique<char[]>(1)) {}
-	String(const String &other) : length(other.length), string(make_unique<char[]>(length+1)) {
-		strcpy(string.get(), other.string.get());
+	String() : length(0), string(new char[1] {'\0'}) {}
+	String(const String &other) : length(other.length), string(new char[length+1]) {
+		strcpy(string, other.string);
 	}
 	explicit String(const char* s) : length(strlen(s)), string(new char[length + 1]) {
-		strcpy(string.get(), s);
+		strcpy(string, s);
+	}
+
+	~String() {
+		delete[] string;
 	}
 	bool operator!=(const String &other) const{
 		if (length != other.length) return true;
@@ -28,7 +32,7 @@ public:
 	}
 
 	auto operator<=>(const String& other) const{
-		return strcmp(string.get(), other.string.get()) <=> 0;
+		return strcmp(string, other.string) <=> 0;
 	}
 
 	friend void print (const String&);
@@ -42,22 +46,31 @@ void input(String &string) {
 	char ch;
 	int length = 0;
 	int capacity = 10;
-	unique_ptr<char[]> result = make_unique<char[]>(capacity);
+	char* result = new char[capacity];
 	cout << "Enter string:" << endl;
 	while (cin.get(ch) && ch != '\n') {
 		if (length > capacity) {
 			capacity *= 2;
-			auto newBuffer = make_unique<char[]>(capacity);
-			strcpy(newBuffer.get(), result.get());
-			result = move(newBuffer);
+			auto newBuffer = new char[capacity];
+			for (int i = 0; i < length;i++) {
+				newBuffer[i] = result[i];
+			}
+			delete[] result;
+			result = newBuffer;
 		}
 		result[length++] = ch;
 	}
 	result[length] = '\0';
 
+	delete[] string.string;
 	string.length = length;
-	string.string = make_unique<char[]>(capacity);
-	strcpy(string.string.get(), result.get());
+	string.string = new char[length+1];
+	for (int i = false; i < length;i++) {
+		string.string[i] = result[i];
+	}
+	string.string[length] = '\0';
+	
+	delete[] result;
 }
 
 int main()
