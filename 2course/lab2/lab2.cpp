@@ -9,74 +9,72 @@ private:
 	char* string;
 	int length;
 public:
-	String() {
-		string = new char[1];
-		string[0] = '\0';
-		length = 0;
-	}
+	String() : string(new char[1] {'\0'}), length(0) {}
 	String(const String &other) {
 		length = other.length;
 		string = new char[length + 1];
 		strcpy(string, other.string);
 	}
-	String(const char* s) {
+	explicit String(const char* s) {
 		length = strlen(s);
 		string = new char[length + 1];
 		strcpy(string, s);
 	}
-
+	~String() {
+		delete[] string;
+	}
 	bool operator!=(const String &other) {
-		if (length != other.length) return 1;
+		if (length != other.length) return true;
 		for (int i = 0; i < length;i++) {
-			if (string[i] != other.string[i]) return 1;
+			if (string[i] != other.string[i]) return true;
 		}
-		return 0;
+		return false;
 	}
 	bool operator>(const String &other) {
-		if (length > other.length) return 1;
-		if (length < other.length) return 0;
+		if (length > other.length) return true;
+		if (length < other.length) return false;
 		for (int i = 0; i < length;i++) {
 			if (string[i] != other.string[i]) {
-				return string[i] > other.string[i] ? 1 : 0;
+				return string[i] > other.string[i] ? true : false;
 			}
 		}
 		return false;
 	}
 	bool operator<(const String& other) {
-		if (length > other.length) return 0;
-		if (length < other.length) return 1;
+		if (length > other.length) return false;
+		if (length < other.length) return true;
 		for (int i = 0; i < length;i++) {
 			if (string[i] != other.string[i]) {
-				return string[i] > other.string[i] ? 0 : 1;
+				return string[i] > other.string[i] ? false : true;
 			}
 		}
 		return false;
 	}
 	bool operator>=(const String& other) {
-		if (length > other.length) return 1;
-		if (length < other.length) return 0;	
+		if (length > other.length) return true;
+		if (length < other.length) return false;
 		for (int i = 0; i < length;i++) {
 			if (string[i] != other.string[i]) {
-				return string[i] > other.string[i] ? 1 : 0;
+				return string[i] > other.string[i] ? true : false;
 			}
 		}
 		return 1;
 	}
 	bool operator<=(const String& other) {
-		if (length > other.length) return 0;
-		if (length < other.length) return 1;
+		if (length > other.length) return false;
+		if (length < other.length) return true;
 		for (int i = 0; i < length;i++) {
 			if (string[i] != other.string[i]) {
-				return string[i] > other.string[i] ? 0 : 1;
+				return string[i] > other.string[i] ? false : true;
 			}
 		}
 		return 1;
 	}
-	friend void print(const String&);
+	friend const void print(const String&);
 	friend void input(String&);
 };
 
-void print(const String &string) {
+void const print (const String &string){
 	cout << string.string << endl;
 }
 void input(String &string) {
@@ -88,7 +86,7 @@ void input(String &string) {
 	while (cin.get(ch) && ch != '\n') {
 		if (length > capacity) {
 			capacity *= 2;
-			char* newBuffer = new char[capacity];
+			auto newBuffer = new char[capacity];
 			for (int i = 0; i < length;i++) {
 				newBuffer[i] = result[i];
 			}
@@ -102,7 +100,7 @@ void input(String &string) {
 	delete[] string.string;
 	string.length = length;
 	string.string = new char[length+1];
-	for (int i = 0; i < length;i++) {
+	for (int i = false; i < length;i++) {
 		string.string[i] = result[i];
 	}
 	string.string[length] = '\0';
