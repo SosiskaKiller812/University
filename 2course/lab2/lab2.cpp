@@ -11,7 +11,7 @@ private:
 	int length;
 	char* string;
 public:
-	String() : string(new char[1] {'\0'}), length(0) {}
+	String() : length(0), string(new char[1] {'\0'}) {}
 	String(const String &other) : length(other.length), string(new char[length+1]) {
 		strcpy(string, other.string);
 	}
@@ -22,7 +22,7 @@ public:
 	~String() {
 		delete[] string;
 	}
-	bool operator!=(const String &other) {
+	bool const operator!=(const String &other) {
 		if (length != other.length) return true;
 		for (int i = 0; i < length;i++) {
 			if (string[i] != other.string[i]) return true;
