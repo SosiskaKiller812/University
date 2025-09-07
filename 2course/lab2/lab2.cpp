@@ -8,15 +8,14 @@ using namespace std;
 
 class String {
 private:
-	int length = 0;
+	int length;
 	char* string;
 public:
 	String() : string(new char[1] {'\0'}), length(0) {}
 	String(const String &other) : length(other.length), string(new char[length+1]) {
 		strcpy(string, other.string);
 	}
-	explicit String(const char* s) : string(new char[length + 1]) {
-		length = strlen(s);
+	explicit String(const char* s) : length(strlen(s)), string(new char[length + 1]) {
 		strcpy(string, s);
 	}
 
