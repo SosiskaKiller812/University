@@ -1,6 +1,8 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
+#include <compare> 
+#include <cstring>
 
 using namespace std;
 
@@ -10,16 +12,13 @@ private:
 	int length;
 public:
 	String() : string(new char[1] {'\0'}), length(0) {}
-	String(const String &other) {
-		length = other.length;
-		string = new char[length + 1];
+	String(const String &other) : length(other.length), string(new char[length+1]) {
 		strcpy(string, other.string);
 	}
-	explicit String(const char* s) {
-		length = strlen(s);
-		string = new char[length + 1];
+	explicit String(const char* s) : length(strlen(s)), string(new char[length + 1]) {
 		strcpy(string, s);
 	}
+
 	~String() {
 		delete[] string;
 	}
@@ -30,51 +29,16 @@ public:
 		}
 		return false;
 	}
-	bool operator>(const String &other) {
-		if (length > other.length) return true;
-		if (length < other.length) return false;
-		for (int i = 0; i < length;i++) {
-			if (string[i] != other.string[i]) {
-				return string[i] > other.string[i] ? true : false;
-			}
-		}
-		return false;
+
+	auto operator<=>(const String& other) const{
+		return strcmp(string, other.string) <=> 0;
 	}
-	bool operator<(const String& other) {
-		if (length > other.length) return false;
-		if (length < other.length) return true;
-		for (int i = 0; i < length;i++) {
-			if (string[i] != other.string[i]) {
-				return string[i] > other.string[i] ? false : true;
-			}
-		}
-		return false;
-	}
-	bool operator>=(const String& other) {
-		if (length > other.length) return true;
-		if (length < other.length) return false;
-		for (int i = 0; i < length;i++) {
-			if (string[i] != other.string[i]) {
-				return string[i] > other.string[i] ? true : false;
-			}
-		}
-		return 1;
-	}
-	bool operator<=(const String& other) {
-		if (length > other.length) return false;
-		if (length < other.length) return true;
-		for (int i = 0; i < length;i++) {
-			if (string[i] != other.string[i]) {
-				return string[i] > other.string[i] ? false : true;
-			}
-		}
-		return 1;
-	}
-	friend const void print(const String&);
+
+	friend void print (const String&);
 	friend void input(String&);
 };
 
-void const print (const String &string){
+void print (const String &string){
 	cout << string.string << endl;
 }
 void input(String &string) {
