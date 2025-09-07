@@ -1,6 +1,7 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
+#include <memory>
 #include <compare> 
 #include <cstring>
 
@@ -9,20 +10,16 @@ using namespace std;
 class String {
 private:
 	int length;
-	char* string;
+	unique_ptr<char[]> string;
 public:
-	String() : length(0), string(new char[1] {'\0'}) {}
-	String(const String &other) : length(other.length), string(new char[length+1]) {
-		strcpy(string, other.string);
+	String() : length(0), string(make_unique<char[]>(1)) {}
+	String(const String &other) : length(other.length), string(make_unique<char[]>(length+1)) {
+		strcpy(string.get(), other.string.get());
 	}
 	explicit String(const char* s) : length(strlen(s)), string(new char[length + 1]) {
-		strcpy(string, s);
+		strcpy(string.get(), s);
 	}
-
-	~String() {
-		delete[] string;
-	}
-	bool const operator!=(const String &other) {
+	bool operator!=(const String &other) const{
 		if (length != other.length) return true;
 		for (int i = 0; i < length;i++) {
 			if (string[i] != other.string[i]) return true;
@@ -31,7 +28,7 @@ public:
 	}
 
 	auto operator<=>(const String& other) const{
-		return strcmp(string, other.string) <=> 0;
+		return strcmp(string.get(), other.string.get()) <=> 0;
 	}
 
 	friend void print (const String&);
@@ -45,31 +42,22 @@ void input(String &string) {
 	char ch;
 	int length = 0;
 	int capacity = 10;
-	char* result = new char[capacity];
+	unique_ptr<char[]> result = make_unique<char[]>(capacity);
 	cout << "Enter string:" << endl;
 	while (cin.get(ch) && ch != '\n') {
 		if (length > capacity) {
 			capacity *= 2;
-			auto newBuffer = new char[capacity];
-			for (int i = 0; i < length;i++) {
-				newBuffer[i] = result[i];
-			}
-			delete[] result;
-			result = newBuffer;
+			auto newBuffer = make_unique<char[]>(capacity);
+			strcpy(newBuffer.get(), result.get());
+			result = move(newBuffer);
 		}
 		result[length++] = ch;
 	}
 	result[length] = '\0';
 
-	delete[] string.string;
 	string.length = length;
-	string.string = new char[length+1];
-	for (int i = false; i < length;i++) {
-		string.string[i] = result[i];
-	}
-	string.string[length] = '\0';
-	
-	delete[] result;
+	string.string = make_unique<char[]>(capacity);
+	strcpy(string.string.get(), result.get());
 }
 
 int main()
