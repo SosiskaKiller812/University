@@ -14,10 +14,16 @@ private:
 public:
 	String() : length(0), string(new char[1] {'\0'}) {}
 	String(const String &other) : length(other.length), string(new char[length+1]) {
-		strcpy(string, other.string);
+		for (int i = 0; i < length;i++) {
+			string[i] = other.string[i];
+		}
+		string[length] = '\0';
 	}
 	explicit String(const char* s) : length(strlen(s)), string(new char[length + 1]) {
-		strcpy(string, s);
+		for (int i = 0; i < length;i++) {
+			string[i] = s[i];
+		}
+		string[length] = '\0';
 	}
 
 	~String() {
