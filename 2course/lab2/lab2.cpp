@@ -13,7 +13,7 @@ private:
 	char* string;
 public:
 	String() : length(0), string(new char[1] {'\0'}) {}
-	String(const String &other) : length(other.length), string(new char[length+1]) {
+	String(const String& other) : length(other.length), string(new char[length + 1]) {
 		for (int i = 0; i < length;i++) {
 			string[i] = other.string[i];
 		}
@@ -29,7 +29,7 @@ public:
 	~String() {
 		delete[] string;
 	}
-	bool operator!=(const String &other) const{
+	bool operator!=(const String& other) const {
 		if (length != other.length) return true;
 		for (int i = 0; i < length;i++) {
 			if (string[i] != other.string[i]) return true;
@@ -37,18 +37,18 @@ public:
 		return false;
 	}
 
-	auto operator<=>(const String& other) const{
+	auto operator<=>(const String& other) const {
 		return strcmp(string, other.string) <=> 0;
 	}
 
-	friend void print (const String&);
+	friend void print(const String&);
 	friend void input(String&);
 };
 
-void print (const String &string){
+void print(const String& string) {
 	cout << string.string << endl;
 }
-void input(String &string) {
+void input(String& string) {
 	char ch;
 	int length = 0;
 	int capacity = 10;
@@ -70,12 +70,12 @@ void input(String &string) {
 
 	delete[] string.string;
 	string.length = length;
-	string.string = new char[length+1];
+	string.string = new char[length + 1];
 	for (int i = false; i < length;i++) {
 		string.string[i] = result[i];
 	}
 	string.string[length] = '\0';
-	
+
 	delete[] result;
 }
 
