@@ -46,7 +46,7 @@ void input(String &string) {
 	char ch;
 	int length = 0;
 	int capacity = 10;
-	char* result = new char[capacity];
+	auto result = new char[capacity];
 	cout << "Enter string:" << endl;
 	while (cin.get(ch) && ch != '\n') {
 		if (length > capacity) {
