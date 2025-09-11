@@ -1,6 +1,8 @@
 #include "InputSystem.hpp"
 
-bool isNumber(const string &str){
+using namespace std;
+
+bool isInt(const string &str){
 	if(str.empty()) return false;
 
 	int start = 0;
@@ -19,12 +21,49 @@ bool isNumber(const string &str){
 
 void inputInt(int &value, int min, int max){
 	string inputInt;
-	while(1){
+	while(true){
 		cin >> inputInt;
-		if(isNumber(inputInt)){
+		if(isInt(inputInt)){
 			int temp = stoi(inputInt);
 			if(temp >= min && temp <= max){
-				(value) = temp;
+				value = temp;
+				return;
+			}
+		}
+		cout << "Incorrect input!" << endl << "Try again:" << endl;
+	}
+}
+
+bool isDouble(const string &str){
+	if(str.empty()) return false;
+	bool haveDot = false;
+
+	int start = 0;
+	if(str[0] == '-'){
+		if(str.length() == 1) return false;
+		start = 1;
+	}
+
+	for(int i = start; i < str.length(); i++){
+		if(!isdigit(str[i]) && str[i] != '.'){
+			return false;
+		}
+		if(str[i] == '.'){
+			if(!haveDot) haveDot = true;
+			else return false;
+		}
+	}
+	return true;
+}
+
+void inputDouble(double &value, double min, double max){
+	string inputDouble;
+	while(true){
+		cin >> inputDouble;
+		if(isDouble(inputDouble)){
+			double temp = stod(inputDouble);
+			if(temp >= min && temp <= max){
+				value = temp;
 				return;
 			}
 		}

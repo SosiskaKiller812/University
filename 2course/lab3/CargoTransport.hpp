@@ -2,13 +2,11 @@
 
 #include <string>
 
-using namespace std;
-
 class CargoTransport{
 protected:
 	int pricePh;
 	int kmPh;
-	string name;
+	std::string name;
 public:
 	int getKmph() const{
 		return kmPh;
@@ -25,7 +23,7 @@ public:
 		}
 		return 0;
 	}
-	string getName(){ return name; }
+	std::string getName() const{ return name; }
 };
 
 class Plane :public CargoTransport{
