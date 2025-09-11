@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Matrix::Matrix() : rows(2), columns(2), matrica(nullptr){
+Matrix::Matrix() : rows(2), columns(2){
 	matrica = new double *[rows];
 	for(int i = 0; i < rows; i++){
 		matrica[i] = new double[columns];
@@ -13,7 +13,7 @@ Matrix::Matrix() : rows(2), columns(2), matrica(nullptr){
 		}
 	}
 }
-Matrix::Matrix(int r, int c) : rows(r), columns(c), matrica(nullptr){
+Matrix::Matrix(int r, int c) : rows(r), columns(c){
 	matrica = new double *[rows];
 	for(int i = 0; i < rows; i++){
 		matrica[i] = new double[columns];
@@ -25,7 +25,7 @@ Matrix::Matrix(int r, int c) : rows(r), columns(c), matrica(nullptr){
 		}
 	}
 }
-Matrix::Matrix(const Matrix &other) : rows(other.rows), columns(other.columns), matrica(nullptr){
+Matrix::Matrix(const Matrix &other) : rows(other.rows), columns(other.columns){
 	matrica = new double *[rows];
 	for(int i = 0; i < other.rows; i++){
 		matrica[i] = new double[columns];

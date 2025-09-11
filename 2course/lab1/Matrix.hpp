@@ -2,7 +2,7 @@ class Matrix{
 private:
 	int rows;
 	int columns;
-	double **matrica;
+	double **matrica = nullptr;
 public:
 	Matrix();
 	Matrix(int rows, int cols);
