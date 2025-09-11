@@ -4,15 +4,15 @@
 
 using namespace std;
 
-
 int main(){
 	cout << "Enter size of matrix:" << endl;
-	int columns, rows;
+	int columns;
+	int rows;
 	inputInt(rows, 0);
 	inputInt(columns, 0);
 	Matrix M(rows, columns);
 
-	while(1){
+	while(true){
 		system("cls");
 		cout << "1 Show matrix" << endl << "2 Set value" << endl << "3 Set all values" << endl << "4 Subtract from element" << endl << "0 Exit" << endl;
 		char option;
@@ -27,7 +27,8 @@ int main(){
 		{
 			cout << "2 Set value" << endl;
 			cout << "Enter row, column and value to set" << endl;
-			int row, column;
+			int row;
+			int column;
 			double value;
 			inputInt(row, 0, rows-1);
 			inputInt(column, 0, columns-1);
@@ -43,7 +44,8 @@ int main(){
 		{
 			cout << "4 subtract from element" << endl;
 			cout << "Enter row, column and value to subtract" << endl;
-			int row, column;
+			int row;
+			int column;
 			double value;
 			inputInt(row, 0, rows - 1);
 			inputInt(column, 0, columns - 1);
@@ -55,7 +57,7 @@ int main(){
 			return 0;
 			break;
 		default:
-			printf("Incorrect input!\n");
+			cout << "Incorrect input!" << endl;
 			system("pause");
 		}
 	}

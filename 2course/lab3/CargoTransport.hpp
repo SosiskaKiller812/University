@@ -23,6 +23,7 @@ public:
 		if(distance > 0){
 			return getTime(distance) * pricePh;
 		}
+		return 0;
 	}
 	string getName(){ return name; }
 };

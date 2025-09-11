@@ -1,5 +1,7 @@
 #include "InputSystem.hpp"
 
+using namespace std;
+
 bool isInt(const string &str){
 	if(str.empty()) return false;
 
@@ -39,16 +41,14 @@ bool isDouble(const string &str){
 	return true;
 }
 
-
-
 void inputInt(int &value, int min, int max){
 	string inputInt;
-	while(1){
+	while(true){
 		cin >> inputInt;
 		if(isInt(inputInt)){
 			int temp = stoi(inputInt);
 			if(temp >= min && temp <= max){
-				(value) = temp;
+				value = temp;
 				return;
 			}
 		}
@@ -58,12 +58,12 @@ void inputInt(int &value, int min, int max){
 
 void inputDouble(double &value, double min, double max){
 	string inputDouble;
-	while(1){
+	while(true){
 		cin >> inputDouble;
 		if(isDouble(inputDouble)){
 			double temp = stod(inputDouble);
 			if(temp >= min && temp <= max){
-				(value) = temp;
+				value = temp;
 				return;
 			}
 		}
