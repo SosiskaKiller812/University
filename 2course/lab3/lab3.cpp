@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <string>
 #include <unordered_map>
+
 #include "CargoTransport.hpp"
 #include "InputSystem.hpp"
 
@@ -47,7 +48,7 @@ int main(){
 	Train train;
 	CargoTransport cars[3] = {car, plane, train};
 	int currentTransport = 0;
-	while(1){
+	while(true){
 		system("cls");
 		cout << "Current transport ->" << cars[currentTransport].getName() << endl;
 		cout << "1 Choose transport" << endl << "2 Time" << endl << "3 Price" << endl << "4 add City" << endl << "5 Show cities" << endl << "0 Exit" << endl;
@@ -75,20 +76,17 @@ int main(){
 			break;
 		case '5':
 			cout << "City\t" << "Distance" << endl;
-			for(auto it = cities.begin(); it != cities.end(); ++it){
-				cout << it->first << "  -  " << it->second << endl;
+			for(const auto &[city, distance] : cities){
+				cout << city << "  -  " << distance << endl;
 			}
 			system("pause");
 			break;
 		case '0':
+			delete cars;
 			return 0;
-			break;
 		default:
-			printf("Incorrect input!\n");
+			cout << "Incorrect input!" << endl;
 			system("pause");
 		}
 	}
-
-	delete cars;
-	return 0;
 }
