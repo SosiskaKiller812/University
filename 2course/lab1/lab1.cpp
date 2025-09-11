@@ -1,87 +1,65 @@
 ﻿#include <iostream>
+#include "Matrix.hpp"
+#include "InputSystem.hpp"
 
 using namespace std;
 
-class Matrix {
-private:
-	int rows;
-	int columns;
-	double** matrica;
-public:
-	Matrix() {
-		rows = 2;
-		columns = 2;
-		matrica = new double* [rows];
-		for (int i = 0; i < rows; i++) {
-			matrica[i] = new double[columns];
-		}
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < columns; j++) {
-				matrica[i][j] = 0;
-			}
-		}
-	}
-	Matrix(int rows, int cols) {
-		this->rows = rows;
-		columns = cols;
-		matrica = new double* [rows];
-		for (int i = 0; i < rows; i++) {
-			matrica[i] = new double[columns];
-		}
 
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < columns; j++) {
-				matrica[i][j] = 0;
-			}
-		}
-	}
-	~Matrix() {
-		for (int i = 0; i < rows; i++) {
-			delete[] matrica[i];
-		}
-		delete[] matrica;
-	}
-	void setValues() {
-		cout << "Enter values:" << endl;
-		for (int i = 0;i < rows;i++) {
-			for (int j = 0;j < columns;j++) {
-				double value;
-				cin >> value;
-				matrica[i][j] = value;
-			}
-		}
-	}
-	void setValue(int r, int c, double value) {
-		if (r <= rows && c <= columns) {
-			matrica[r][c] = value;
-		}
-	}
-	void print() {
-		cout << endl;
-		for (int i = 0;i < rows;i++) {
-			for (int j = 0;j < columns;j++) {
-				cout << matrica[i][j] << "\t";
-			}
-			cout << endl;
-		}
-		cout << endl;
-	}
-	void subtractFromElement(int r, int c, double value) {
-		if (r <= rows && c <= columns) {
-			matrica[r][c] -= value;
-		}
-	}
-};
+int main(){
+	cout << "Enter size of matrix:" << endl;
+	int columns, rows;
+	inputInt(rows, 0);
+	inputInt(columns, 0);
+	Matrix M(rows, columns);
 
+	while(1){
+		system("cls");
+		cout << "1 Show matrix" << endl << "2 Set value" << endl << "3 Set all values" << endl << "4 Subtract from element" << endl << "0 Exit" << endl;
+		char option;
+		cin >> option;
+		switch(option){
+		case '1':
+			cout << "1 Show matrix" << endl;
+			M.print();
+			system("pause");
+			break;
+		case '2':
+		{
+			cout << "2 Set value" << endl;
+			cout << "Enter row, column and value to set" << endl;
+			int row, column;
+			double value;
+			inputInt(row, 0, rows-1);
+			inputInt(column, 0, columns-1);
+			inputDouble(value);
+			M.setValue(rows, columns, value);
+			break;
+		}
+		case '3':
+			cout << "3 Set all values" << endl;
+			M.setValues();
+			break;
+		case '4':
+		{
+			cout << "4 subtract from element" << endl;
+			cout << "Enter row, column and value to subtract" << endl;
+			int row, column;
+			double value;
+			inputInt(row, 0, rows - 1);
+			inputInt(column, 0, columns - 1);
+			inputDouble(value);
+			M.subtractFromElement(row, column, value);
+			break;
+		}
+		case '0':
+			return 0;
+			break;
+		default:
+			printf("Incorrect input!\n");
+			system("pause");
+		}
+	}
 
-
-int main()
-{
-	Matrix M(3, 3);
-	M.setValues();
-	M.print();
-	M.subtractFromElement(2, 1, 0.5);
-	M.print();
 	return 0;
 }
 
