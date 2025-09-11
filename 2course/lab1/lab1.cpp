@@ -55,13 +55,10 @@ int main(){
 		}
 		case '0':
 			return 0;
-			break;
 		default:
 			cout << "Incorrect input!" << endl;
 			system("pause");
 		}
 	}
-
-	return 0;
 }
 
