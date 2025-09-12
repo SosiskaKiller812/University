@@ -55,6 +55,7 @@ int main(){
 			operations(chooseString(strings, stringsAmount), chooseString(strings, stringsAmount));
 			break;
 		case '0':
+			delete[] strings;
 			return 0;
 		default:
 			cout << "Incorrect input!" << endl;
