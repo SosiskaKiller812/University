@@ -2,102 +2,64 @@
 
 #include <iostream>
 
-#include <compare> 
-#include <cstring>
+#include "String.hpp"
+#include "Utilities.hpp"
 
 using namespace std;
 
-class String {
-private:
-	int length;
-	char* string;
-public:
-	String() : length(0), string(new char[1] {'\0'}) {}
-	String(const String& other) : length(other.length), string(new char[length + 1]) {
-		for (int i = 0; i < length;i++) {
-			string[i] = other.string[i];
+void addString(String*& array, int& strAmount, int& capacity){
+	String newString;
+	input(newString);
+
+	if(strAmount >= capacity){
+		capacity += 10;
+		String *newArray = new String[capacity];
+		for(int i = 0; i < strAmount; i++){
+			newArray[i] = array[i];
 		}
-		string[length] = '\0';
-	}
-	explicit String(const char* s) : length(strlen(s)), string(new char[length + 1]) {
-		for (int i = 0; i < length;i++) {
-			string[i] = s[i];
-		}
-		string[length] = '\0';
+		delete[] array;
+		array = newArray;
 	}
 
-	~String() {
-		delete[] string;
-	}
-	bool operator!=(const String& other) const {
-		if (length != other.length) return true;
-		for (int i = 0; i < length;i++) {
-			if (string[i] != other.string[i]) return true;
-		}
-		return false;
-	}
-
-	auto operator<=>(const String& other) const {
-		return strcmp(string, other.string) <=> 0;
-	}
-
-	friend void print(const String&);
-	friend void input(String&);
-};
-
-void print(const String& string) {
-	cout << string.string << endl;
+	array[strAmount] = newString;
+	strAmount++;
 }
-void input(String& string) {
-	char ch;
-	int length = 0;
-	int capacity = 10;
-	auto result = new char[capacity];
-	cout << "Enter string:" << endl;
-	while (cin.get(ch) && ch != '\n') {
-		if (length > capacity) {
-			capacity *= 2;
-			auto newBuffer = new char[capacity];
-			for (int i = 0; i < length;i++) {
-				newBuffer[i] = result[i];
+
+
+int main(){
+	int stringsAmount = 0;
+	int stringsCapacity = 10;
+	String* strings = new String[stringsCapacity];
+
+	while(true){
+		system("cls");
+		cout << "1 Show all strings" << endl << "2 Add string" << endl << "3 Choose operation with strings" << endl << "0 Exit" << endl;
+		char option;
+		cin >> option;
+		switch(option){
+		case '1':
+			cout << "1 Show all strings" << endl;
+			for(int i = 0; i < stringsAmount; i++){
+				print(strings[i]);
 			}
-			delete[] result;
-			result = newBuffer;
+			system("pause");
+			break;
+		case '2':
+		{
+			cout << "2 Add string" << endl;
+			addString(strings, stringsAmount, stringsCapacity);
+			break;
 		}
-		result[length++] = ch;
+		case '3':
+			cout << "3 Choose operation with strings" << endl;
+			operations(chooseString(strings, stringsAmount), chooseString(strings, stringsAmount));
+			break;
+		case '0':
+			return 0;
+		default:
+			cout << "Incorrect input!" << endl;
+			system("pause");
+		}
 	}
-	result[length] = '\0';
-
-	delete[] string.string;
-	string.length = length;
-	string.string = new char[length + 1];
-	for (int i = false; i < length;i++) {
-		string.string[i] = result[i];
-	}
-	string.string[length] = '\0';
-
-	delete[] result;
-}
-
-int main()
-{
-	String A("privet");
-	String B = A;
-	String C("AnotherString");
-	cout << (A != B) << endl;
-	cout << (A != C) << endl;
-	cout << (A > B) << endl;
-	cout << (A >= C) << endl;
-	cout << (A <= B) << endl;
-	cout << (A < B) << endl;
-	cout << (A < C) << endl;
-
-
-	print(A);
-	print(B);
-	print(C);
-	String D;
-	input(D);
-	print(D);
 }
 
