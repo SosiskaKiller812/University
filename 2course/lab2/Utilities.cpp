@@ -19,8 +19,9 @@ int myStrlen(const char *str){
 
 String chooseString(const String *strings, int stringsAmount){
 	for(int i = 0; i < stringsAmount; i++){
-		cout << i + 1 << endl;
+		cout << i + 1 << " ";
 		print(strings[i]);
+		cout << endl;
 	}
 	int option;
 	do{
@@ -29,7 +30,7 @@ String chooseString(const String *strings, int stringsAmount){
 	return strings[option-1];
 }
 
-bool operations(const String string1, const String string2){
+void operations(const String string1, const String string2){
 	cout << "1 <" << endl << "2 >" << endl << "3 !=" << endl << "4 <=" << endl << "5 >=" << endl;
 	char option;
 	do{
@@ -37,20 +38,48 @@ bool operations(const String string1, const String string2){
 	}
 	while(option < 49 || option > 53);
 
+	print(string1);
+	
+	bool result{};
 	switch(option){
 	case '1':
-		return string1 < string2;
+		cout << " < ";
+		result = string1 < string2;
 		break;
 	case '2':
-		return string1 > string2;
+		cout << " > ";
+		result = string1 > string2;
 		break;
 	case '3':
-		return string1 != string2;
+		cout << " != ";
+		result = string1 != string2;
 		break;
 	case '4':
-		return string1 <= string2;
+		cout << " <= ";
+		result = string1 <= string2;
 		break;
 	case '5':
-		return string1 >= string2;
+		cout << " >= ";
+		result = string1 >= string2;
 	}
+	print(string2);
+	cout << " - " << result << endl;
+}
+
+void addString(String *&array, int &strAmount, int &capacity){
+	String newString;
+	input(newString);
+
+	if(strAmount >= capacity){
+		capacity += 10;
+		String *newArray = new String[capacity];
+		for(int i = 0; i < strAmount; i++){
+			newArray[i] = array[i];
+		}
+		delete[] array;
+		array = newArray;
+	}
+
+	array[strAmount] = newString;
+	strAmount++;
 }

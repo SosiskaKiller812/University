@@ -31,9 +31,11 @@ using namespace std;
 		}
 		return false;
 	}
-	auto String::operator<=>(const String &other) const{
+	std::strong_ordering String::operator<=>(const String &other) const{
 		return strcmp(string, other.string) <=> 0;
 	}
+
+
 	String &String::operator=(const String &other){
 		if(this == &other){
 			return *this;
@@ -53,7 +55,7 @@ using namespace std;
 
 
 	void print(const String &string){
-		cout << string.string << endl;
+		cout << string.string;
 	}
 	void input(String &string){
 		char ch;

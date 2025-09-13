@@ -1,3 +1,5 @@
+#pragma once
+
 #include <compare>
 
 class String{
@@ -12,7 +14,7 @@ public:
 	~String();
 	bool operator!=(const String &other) const;
 
-	auto operator<=>(const String &other) const;
+	std::strong_ordering operator<=>(const String &other) const;
 
 	String &operator=(const String &other);
 	friend void print(const String &);

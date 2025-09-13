@@ -7,29 +7,13 @@
 
 using namespace std;
 
-void addString(String*& array, int& strAmount, int& capacity){
-	String newString;
-	input(newString);
-
-	if(strAmount >= capacity){
-		capacity += 10;
-		String *newArray = new String[capacity];
-		for(int i = 0; i < strAmount; i++){
-			newArray[i] = array[i];
-		}
-		delete[] array;
-		array = newArray;
-	}
-
-	array[strAmount] = newString;
-	strAmount++;
-}
-
-
 int main(){
 	int stringsAmount = 0;
-	int stringsCapacity = 10;
-	String* strings = new String[stringsCapacity];
+	int stringsCapacity = 7;
+	String *strings = new String[stringsCapacity];
+	strings[stringsAmount++] = String("Hello");
+	strings[stringsAmount++] = String("Hello");
+	strings[stringsAmount++] = String("world");
 
 	while(true){
 		system("cls");
@@ -38,22 +22,34 @@ int main(){
 		cin >> option;
 		switch(option){
 		case '1':
+			system("cls");
 			cout << "1 Show all strings" << endl;
 			for(int i = 0; i < stringsAmount; i++){
 				print(strings[i]);
+				cout << endl;
 			}
 			system("pause");
 			break;
 		case '2':
 		{
+			system("cls");
 			cout << "2 Add string" << endl;
 			addString(strings, stringsAmount, stringsCapacity);
 			break;
 		}
 		case '3':
-			cout << "3 Choose operation with strings" << endl;
-			operations(chooseString(strings, stringsAmount), chooseString(strings, stringsAmount));
+		{
+			system("cls");
+			cout << "Choose first string:" << endl;
+			String first = chooseString(strings, stringsAmount);
+			system("cls");
+			cout << "Choose second string:" << endl;
+			String second = chooseString(strings, stringsAmount);
+			system("cls");
+			operations(first, second);
+			system("pause");
 			break;
+		}
 		case '0':
 			delete[] strings;
 			return 0;

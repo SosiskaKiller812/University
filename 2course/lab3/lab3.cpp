@@ -20,7 +20,7 @@ int getDistance(const unordered_map<string, int> &map){
 	cout << "Enter city or distance" << endl;
 	string city;
 	cin >> city;
-	if(isNumber(city)){
+	if(isInt(city)){
 		int distance = stoi(city);
 		return distance;
 	}
@@ -82,7 +82,6 @@ int main(){
 			system("pause");
 			break;
 		case '0':
-			delete cars;
 			return 0;
 		default:
 			cout << "Incorrect input!" << endl;
