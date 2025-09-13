@@ -61,8 +61,6 @@ void operations(const String string1, const String string2){
 	case '5':
 		cout << " >= ";
 		result = string1 >= string2;
-	default:
-		return;
 	}
 	print(string2);
 	cout << " - " << result << endl;
