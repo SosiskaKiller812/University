@@ -10,7 +10,7 @@ using namespace std;
 int main(){
 	int stringsAmount = 0;
 	int stringsCapacity = 7;
-	String *strings = new String[stringsCapacity];
+	auto *strings = new String[stringsCapacity];
 	strings[stringsAmount++] = String("Hello");
 	strings[stringsAmount++] = String("Hello");
 	strings[stringsAmount++] = String("world");

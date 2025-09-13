@@ -9,7 +9,7 @@ private:
 public:
 	String();
 	String(const String &other);
-	String(const char *s);
+	explicit String(const char *s);
 
 	~String();
 	bool operator!=(const String &other) const;

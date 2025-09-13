@@ -61,6 +61,8 @@ void operations(const String string1, const String string2){
 	case '5':
 		cout << " >= ";
 		result = string1 >= string2;
+	default:
+		return;
 	}
 	print(string2);
 	cout << " - " << result << endl;
@@ -72,7 +74,7 @@ void addString(String *&array, int &strAmount, int &capacity){
 
 	if(strAmount >= capacity){
 		capacity += 10;
-		String *newArray = new String[capacity];
+		auto *newArray = new String[capacity];
 		for(int i = 0; i < strAmount; i++){
 			newArray[i] = array[i];
 		}
