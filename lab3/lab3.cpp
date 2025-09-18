@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void addCity(unordered_map<string, int> &map){
+void addCity(unordered_map<string, int, hash<string>, equal_to<>> &map){
 	string newCity;
 	int cityDistance = 0;
 	cout << "Enter city name" << endl;
@@ -16,7 +16,7 @@ void addCity(unordered_map<string, int> &map){
 	inputInt(cityDistance, 0);
 	map[newCity] = cityDistance;
 }
-int getDistance(const unordered_map<string, int> &map){
+int getDistance(unordered_map<string, int, hash<string>, equal_to<>> &map){
 	cout << "Enter city or distance" << endl;
 	string city;
 	cin >> city;
@@ -35,7 +35,7 @@ int getDistance(const unordered_map<string, int> &map){
 }
 
 int main(){
-	unordered_map<string, int> cities = {
+	unordered_map<string, int, hash<string>, equal_to<>> cities = {
 		{"Brest",344},
 		{"Soligorsk",155},
 		{"Gomel",311},

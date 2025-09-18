@@ -56,7 +56,7 @@ Matrix &Matrix::operator=(const Matrix &other){
 	}
 	return *this;
 }
-void Matrix::setValues(){
+void Matrix::setValues() const{
 	cout << "Enter values:" << endl;
 	for(int i = 0; i < rows; i++){
 		for(int j = 0; j < columns; j++){
@@ -66,7 +66,7 @@ void Matrix::setValues(){
 		}
 	}
 }
-void Matrix::setValue(int r, int c, double value){
+void Matrix::setValue(int r, int c, double value) const{
 	if(r >= rows || r < 0 || c >= columns || c < 0) return;
 	if(r <= rows && c <= columns){
 		matrica[r][c] = value;
@@ -82,7 +82,7 @@ void Matrix::print() const{
 	}
 	cout << endl;
 }
-void Matrix::subtractFromElement(int r, int c, double value){
+void Matrix::subtractFromElement(int r, int c, double value) const{
 	if(r >= rows || r < 0 || c >= columns || c < 0) return;
 	matrica[r][c] -= value;
 }

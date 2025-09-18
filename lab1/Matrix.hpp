@@ -9,8 +9,8 @@ public:
 	Matrix(const Matrix& matrix);
 	~Matrix();
 	Matrix& operator=(const Matrix& other);
-	void setValues();
-	void setValue(int r, int c, double value);
+	void setValues() const;
+	void setValue(int r, int c, double value) const;
 	void print() const;
-	void subtractFromElement(int r, int c, double value);
+	void subtractFromElement(int r, int c, double value) const;
 };
