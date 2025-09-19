@@ -4,6 +4,7 @@
 
 #include "String.hpp"
 #include "Utilities.hpp"
+#include "menu.hpp"
 
 using namespace std;
 
@@ -24,10 +25,7 @@ int main(){
 		case '1':
 			system("cls");
 			cout << "1 Show all strings" << endl;
-			for(int i = 0; i < stringsAmount; i++){
-				print(strings[i]);
-				cout << endl;
-			}
+			ShowAllStrings(strings, stringsAmount);
 			system("pause");
 			break;
 		case '2':
@@ -40,13 +38,7 @@ int main(){
 		case '3':
 		{
 			system("cls");
-			cout << "Choose first string:" << endl;
-			String first = chooseString(strings, stringsAmount);
-			system("cls");
-			cout << "Choose second string:" << endl;
-			String second = chooseString(strings, stringsAmount);
-			system("cls");
-			operations(first, second);
+			Operations(strings, stringsAmount);
 			system("pause");
 			break;
 		}

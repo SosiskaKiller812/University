@@ -1,6 +1,8 @@
 ﻿#include <iostream>
+
 #include "Matrix.hpp"
 #include "InputSystem.hpp"
+#include "menu.hpp"
 
 using namespace std;
 
@@ -26,14 +28,7 @@ int main(){
 		case '2':
 		{
 			cout << "2 Set value" << endl;
-			cout << "Enter row, column and value to set" << endl;
-			int row;
-			int column;
-			double value;
-			inputInt(row, 0, rows-1);
-			inputInt(column, 0, columns-1);
-			inputDouble(value);
-			M.setValue(rows, columns, value);
+			setMatrixValue(M, rows, columns);
 			break;
 		}
 		case '3':
@@ -43,14 +38,7 @@ int main(){
 		case '4':
 		{
 			cout << "4 subtract from element" << endl;
-			cout << "Enter row, column and value to subtract" << endl;
-			int row;
-			int column;
-			double value;
-			inputInt(row, 0, rows - 1);
-			inputInt(column, 0, columns - 1);
-			inputDouble(value);
-			M.subtractFromElement(row, column, value);
+			subtractMatrixValue(M, rows, columns);
 			break;
 		}
 		case '0':

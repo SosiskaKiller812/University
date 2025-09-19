@@ -1,12 +1,14 @@
+#pragma once
+
 class Matrix{
 private:
 	int rows;
 	int columns;
-	double **matrica = nullptr;
+	double **matrix = nullptr;
 public:
 	Matrix();
 	Matrix(int rows, int cols);
-	Matrix(const Matrix& matrix);
+	Matrix(const Matrix& other);
 	~Matrix();
 	Matrix& operator=(const Matrix& other);
 	void setValues() const;
