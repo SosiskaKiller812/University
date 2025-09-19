@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <string_view>
 
 class CargoTransport{
 private:
@@ -8,7 +9,7 @@ private:
 	int kmPh;
 	std::string name;
 public:
-	CargoTransport(int price, int speed, const std::string &transportName);
+	CargoTransport(int price, int speed, std::string_view transportName);
 	int getKmph() const;
 	double getTime(double distance) const;
 	double getPrice(double distance) const;
