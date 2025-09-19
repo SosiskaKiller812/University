@@ -3,11 +3,7 @@
 #include "CargoTransport.hpp"
 
 
-CargoTransport::CargoTransport(int price, int speed, const std::string &transportName){
-	pricePh = price;
-	kmPh = speed;
-	name = transportName;
-}
+CargoTransport::CargoTransport(int price, int speed, const std::string &transportName) : pricePh(price), kmPh(speed), name(transportName){}
 
 int CargoTransport::getKmph() const{
 	return kmPh;
