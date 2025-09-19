@@ -7,7 +7,24 @@
 
 using namespace std;
 
-void addCity(unordered_map<string, int, hash<string>, equal_to<>> &map){
+struct StringHash{
+	using is_transparent = void; // Enable transparent behavior
+
+	size_t operator()(const string &s) const{
+		return hash<string>{}(s);
+	}
+
+	size_t operator()(string_view sv) const{
+		return hash<string_view>{}(sv);
+	}
+
+	size_t operator()(const char *s) const{
+		return hash<string_view>{}(s);
+	}
+};
+
+
+void addCity(unordered_map<string, int, StringHash, equal_to<>> &map){
 	string newCity;
 	int cityDistance = 0;
 	cout << "Enter city name" << endl;
@@ -16,7 +33,8 @@ void addCity(unordered_map<string, int, hash<string>, equal_to<>> &map){
 	inputInt(cityDistance, 0);
 	map[newCity] = cityDistance;
 }
-int getDistance(unordered_map<string, int, hash<string>, equal_to<>> &map){
+
+int getDistance(unordered_map<string, int, StringHash, equal_to<>> &map){
 	cout << "Enter city or distance" << endl;
 	string city;
 	cin >> city;
@@ -35,7 +53,7 @@ int getDistance(unordered_map<string, int, hash<string>, equal_to<>> &map){
 }
 
 int main(){
-	unordered_map<string, int, hash<string>, equal_to<>> cities = {
+	unordered_map<string, int, StringHash, equal_to<>> cities = {
 		{"Brest",344},
 		{"Soligorsk",155},
 		{"Gomel",311},
