@@ -1,7 +1,7 @@
 #include "Matrix.hpp"
 #include "InputSystem.hpp"
 
-#define startSize 2
+const int startSize = 2;
 
 using namespace std;
 

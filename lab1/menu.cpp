@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void setMatrixValue(Matrix& M, int rows, int columns){
+void setMatrixValue(const Matrix& M, int rows, int columns){
 	cout << "Enter row, column and value to set" << endl;
 	int row;
 	int column;
@@ -16,7 +16,7 @@ void setMatrixValue(Matrix& M, int rows, int columns){
 	M.setValue(row, column, value);
 }
 
-void subtractMatrixValue(Matrix& M, int rows, int columns){
+void subtractMatrixValue(const Matrix& M, int rows, int columns){
 	cout << "Enter row, column and value to subtract" << endl;
 	int row;
 	int column;
