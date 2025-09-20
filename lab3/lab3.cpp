@@ -1,23 +1,22 @@
 ﻿#include <iostream>
-#include <string>
-#include <unordered_map>
 
 #include "CargoTransport.hpp"
 #include "OtherTransport.hpp"
 #include "InputSystem.hpp"
 #include "Utilities.hpp"
+#include "LinkedList.hpp"
 
 using namespace std;
 
 int main(){
-	unordered_map<string, int, StringHash, equal_to<>> cities = {
-		{"Brest",344},
-		{"Soligorsk",155},
-		{"Gomel",311},
-		{"Svetlogorsk",217},
-		{"Oshmyani",129},
-		{"Moscow",715}
-	};
+	LinkedList cities;
+	cities.pushBack("Brest", 344);
+	cities.pushBack("Soligorsk", 155);
+	cities.pushBack("Gomel", 311);
+	cities.pushBack("Svetlogorsk", 217);
+	cities.pushBack("Oshmyani", 129);
+	cities.pushBack("Moscow", 715);
+
 
 	Auto car;
 	Plane plane;
@@ -26,8 +25,9 @@ int main(){
 	int currentTransport = 0;
 	while(true){
 		system("cls");
-		cout << "Current transport ->" << cars[currentTransport].getName() << endl;
-		cout << "1 Choose transport" << endl << "2 Time" << endl << "3 Price" << endl << "4 add City" << endl << "5 Show cities" << endl << "0 Exit" << endl;
+		cout << "Current transport ->";
+		print(cars[currentTransport].getName());
+		cout << endl << "1 Choose transport" << endl << "2 Time" << endl << "3 Price" << endl << "4 add City" << endl << "5 Show cities" << endl << "0 Exit" << endl;
 		char option;
 		cin >> option;
 		switch(option){
@@ -52,9 +52,7 @@ int main(){
 			break;
 		case '5':
 			cout << "City\t" << "Distance" << endl;
-			for(const auto &[city, distance] : cities){
-				cout << city << "  -  " << distance << endl;
-			}
+			cities.print();
 			system("pause");
 			break;
 		case '0':
@@ -64,4 +62,5 @@ int main(){
 			system("pause");
 		}
 	}
+
 }

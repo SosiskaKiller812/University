@@ -1,7 +1,17 @@
 #include "OtherTransport.hpp"
+#include "String.hpp"
 
-Plane::Plane() : CargoTransport(70, 1000, "Plane"){}
+const int PlaneSpeed = 1000;
+const int PlanePrice = 70;
 
-Train::Train() : CargoTransport(30, 80, "Train"){}
+const int TrainSpeed = 80;
+const int TrainPrice = 30;
 
-Auto::Auto() : CargoTransport(60, 100, "Auto"){}
+const int AutoSpeed = 100;
+const int AutoPrice = 60;
+
+Plane::Plane() : CargoTransport(PlanePrice, PlaneSpeed, String("Plane")){}
+
+Train::Train() : CargoTransport(TrainPrice, TrainSpeed, String("Train")){}
+
+Auto::Auto() : CargoTransport(AutoPrice, AutoSpeed, String("Auto")){}

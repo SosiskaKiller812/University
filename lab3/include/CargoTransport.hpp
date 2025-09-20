@@ -1,18 +1,17 @@
 #pragma once
 
-#include <string>
-#include <string_view>
+#include "String.hpp"
 
 class CargoTransport{
 private:
 	int pricePh;
 	int kmPh;
-	std::string name;
+	String name;
 public:
-	CargoTransport(int price, int speed, std::string_view transportName);
+	CargoTransport(int price, int speed, String transportName);
 	int getKmph() const;
 	double getTime(double distance) const;
 	double getPrice(double distance) const;
-	std::string getName() const;
+	String getName() const;
 };
 
