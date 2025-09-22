@@ -9,7 +9,6 @@ LinkedList::Node::Node(const String &str, double value)
 	: string(str), data(value){
 }
 
-LinkedList::LinkedList() : size(0){}
 
 void LinkedList::pushBack(const String &string, double data){
 	auto newNode = new Node(string, data);

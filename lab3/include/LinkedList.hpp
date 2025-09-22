@@ -13,10 +13,9 @@ private:
 
 	Node *head = nullptr;
 	Node *tail = nullptr;
-	int size;
+	int size = 0;
 
 public:
-	LinkedList();
 	~LinkedList();
 
 	void pushBack(const String &string, double data);

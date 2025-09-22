@@ -12,7 +12,6 @@ public:
 	explicit String(const char *s);
 
 	~String();
-	bool operator!=(const String &other) const;
 
 	std::strong_ordering operator<=>(const String &other) const;
 
