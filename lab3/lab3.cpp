@@ -17,7 +17,6 @@ int main(){
 	cities.pushBack("Oshmyani", 129);
 	cities.pushBack("Moscow", 715);
 
-
 	Auto car;
 	Plane plane;
 	Train train;
