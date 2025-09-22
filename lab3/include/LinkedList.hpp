@@ -11,8 +11,8 @@ private:
 		Node(const String &str, double value);
 	};
 
-	Node *head;
-	Node *tail;
+	Node *head = nullptr;
+	Node *tail = nullptr;
 	int size;
 
 public:
