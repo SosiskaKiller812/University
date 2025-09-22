@@ -26,21 +26,17 @@ int main(){
 			system("pause");
 			break;
 		case '2':
-		{
 			cout << "2 Set value" << endl;
 			setMatrixValue(M, rows, columns);
 			break;
-		}
 		case '3':
 			cout << "3 Set all values" << endl;
 			M.setValues();
 			break;
 		case '4':
-		{
 			cout << "4 subtract from element" << endl;
 			subtractMatrixValue(M, rows, columns);
 			break;
-		}
 		case '0':
 			return 0;
 		default:
