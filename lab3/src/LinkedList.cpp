@@ -9,6 +9,15 @@ LinkedList::Node::Node(const String &str, double value)
 	: string(str), data(value){
 }
 
+LinkedList::LinkedList(){};
+
+LinkedList::LinkedList(const LinkedList &other) {
+    Node *current = other.head;
+    while (current != nullptr) {
+        pushBack(current->string, current->data);
+        current = current->next;
+    }
+}
 
 void LinkedList::pushBack(const String &string, double data){
 	auto newNode = new Node(string, data);
@@ -21,7 +30,6 @@ void LinkedList::pushBack(const String &string, double data){
 		tail = newNode;
 	}
 
-	size++;
 }
 
 void LinkedList::pushBack(const char *string, double data){
@@ -36,7 +44,6 @@ void LinkedList::pushBack(const char *string, double data){
 		tail = newNode;
 	}
 
-	size++;
 }
 
 LinkedList::Node *LinkedList::find(String key){
@@ -67,5 +74,4 @@ LinkedList::~LinkedList(){
 	}
 	head = nullptr;
 	tail = nullptr;
-	size = 0;
 }
