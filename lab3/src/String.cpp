@@ -57,10 +57,6 @@ bool String::operator==(const String &other) const{
 }
 
 const char &String::operator[](int index) const{
-	//if(index < 0 || index >= length){
-	//	cout << "Index out of range!!!" << endl;
-	//	return '0';
-	//}
 	return string[index];
 }
 

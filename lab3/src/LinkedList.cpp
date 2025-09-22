@@ -12,7 +12,7 @@ LinkedList::Node::Node(const String &str, double value)
 LinkedList::LinkedList() : head(nullptr), tail(nullptr), size(0){}
 
 void LinkedList::pushBack(const String &string, double data){
-	Node *newNode = new Node(string, data);
+	auto newNode = new Node(string, data);
 	if(head == nullptr){
 		head = newNode;
 		tail = newNode;
@@ -27,7 +27,7 @@ void LinkedList::pushBack(const String &string, double data){
 
 void LinkedList::pushBack(const char *string, double data){
 	String newString(string);
-	Node *newNode = new Node(newString, data);
+	auto newNode = new Node(newString, data);
 	if(head == nullptr){
 		head = newNode;
 		tail = newNode;

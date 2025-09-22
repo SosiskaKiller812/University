@@ -98,7 +98,7 @@ double myStod(const String &str){
 
 		if(c == '.'){
 			if(alreadyDot){
-				break; 
+				return 0.0;
 			}
 			alreadyDot = true;
 			continue;
