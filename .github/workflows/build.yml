@@ -1,4 +1,5 @@
 name: Build & SonarCloud
+
 on:
   push:
     branches:
@@ -9,17 +10,20 @@ on:
 jobs:
   build-and-scan:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        lab: [lab1, lab2]  # Матрица для параллельного выполнения
+        include:
+          - lab: lab1
+            projectKey: sosiskakiller812_lab1
+          - lab: lab2  
+            projectKey: sosiskakiller812_lab2
+
     env:
       SONAR_ORG: sosiskakiller812
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     steps:
-      - name: Check lab1 content
-        run: |
-          echo "Содержимое lab1:"
-          ls -la lab1/
-          echo "Файлы в lab1:"
-          find lab1/ -type f -name "*.cpp" -o -name "*.h" -o -name "*.hpp" -o -name "Makefile" | head -10
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -28,22 +32,23 @@ jobs:
       - name: Install Build Wrapper
         uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
 
-      - name: Build lab1
+      - name: Build ${{ matrix.lab }}
         run: |
-          rm -rf lab1/build
-          mkdir -p lab1/build
-          cmake -S lab1 -B lab1/build 
-          build-wrapper-linux-x86-64 --out-dir lab1/build_bw cmake --build lab1/build --config Release
+          rm -rf ${{ matrix.lab }}/build
+          mkdir -p ${{ matrix.lab }}/build
+          cd ${{ matrix.lab }}/build
+          cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          build-wrapper-linux-x86-64 --out-dir ../build_wrapper make
 
-      - name: SonarCloud scan lab1
+      - name: SonarCloud scan ${{ matrix.lab }}
         uses: SonarSource/sonarqube-scan-action@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=lab_1
+            -Dsonar.projectKey=${{ matrix.projectKey }}
             -Dsonar.organization=${{ env.SONAR_ORG }}
-            -Dsonar.sources=lab1
-            -Dsonar.cfamily.compile-commands=lab1/build_wrapper/compile_commands.json
+            -Dsonar.sources=${{ matrix.lab }}/src,${{ matrix.lab }}/include
+            -Dsonar.cfamily.build-wrapper-output=${{ matrix.lab }}/build_wrapper
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
