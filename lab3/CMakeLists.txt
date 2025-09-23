@@ -1,0 +1,26 @@
+
+cmake_minimum_required(VERSION 3.10.0)
+project(lab3 VERSION 0.1.0 LANGUAGES C CXX)
+
+include_directories(include)
+
+set(SOURCES 
+    src/CargoTransport.cpp
+    src/InputSystem.cpp
+    src/LinkedList.cpp
+    src/OtherTransport.cpp
+    src/String.cpp
+    src/Utilities.cpp
+    src/lab3.cpp
+)
+
+set(HEADERS
+    include/CargoTransport.hpp
+    include/InputSystem.hpp
+    include/LinkedList.hpp
+    include/OtherTransport.hpp
+    include/String.hpp
+    include/Utilities.hpp
+)
+
+add_executable(lab3 ${SOURCES} ${HEADERS})
