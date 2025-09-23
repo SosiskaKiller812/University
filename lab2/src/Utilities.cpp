@@ -68,7 +68,7 @@ void operations(const String string1, const String string2){
 	}
 	
 	print(string2);
-	cout << " - " << result << endl;
+	cout << endl << boolalpha << result << endl;
 }
 
 void addString(String *&array, int &strAmount, int &capacity){
