@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <cstring>
 
 #include "Utilities.hpp"
 #include "String.hpp"
