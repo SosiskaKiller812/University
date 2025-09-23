@@ -7,7 +7,7 @@ private:
 	struct Node{
 		String string;
 		double data;
-		Node *next;
+		Node *next = nullptr;
 		Node(const String &str, double value);
 	};
 

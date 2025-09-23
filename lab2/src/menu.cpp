@@ -6,14 +6,14 @@
 
 using namespace std;
 
-void ShowAllStrings(String*& strings, int stringsAmount){
+void showAllStrings(String*& strings, int stringsAmount){
 	for(int i = 0; i < stringsAmount; i++){
 		print(strings[i]);
 		std::cout << endl;
 	}
 }
 
-void Operations(String *&strings, int stringsAmount){
+void operationsWithStrings(String *&strings, int stringsAmount){
 	std::cout << "Choose first string:" << endl;
 	String first = chooseString(strings, stringsAmount);
 	std::system("cls");

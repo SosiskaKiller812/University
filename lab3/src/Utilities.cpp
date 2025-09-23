@@ -11,8 +11,6 @@ using namespace std;
 int getDistance(LinkedList &cities){
 	cout << "Enter city or distance" << endl;
 	String city;
-	cin.clear();
-	cin.ignore(10000, '\n');
 	input(city);
 	if(isInt(city)){
 		int distance = myStoi(city);
@@ -135,3 +133,15 @@ int myStrlen(const char *str){
 	return len;
 }
 
+int myStrcmp(const char* str1, const char* str2) {
+    int i = 0;
+    
+    while (str1[i] != '\0' && str2[i] != '\0') {
+        if (str1[i] != str2[i]) {
+            return str1[i] - str2[i];
+        }
+        i++;
+    }
+
+    return str1[i] - str2[i];
+}

@@ -25,7 +25,7 @@ int String::size() const{
 }
 
 std::strong_ordering String::operator<=>(const String &other) const{
-	return strcmp(string, other.string) <=> 0;
+	return myStrcmp(string, other.string) <=> 0;
 }
 
 String &String::operator=(const String &other){

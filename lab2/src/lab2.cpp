@@ -25,7 +25,7 @@ int main(){
 		case '1':
 			system("cls");
 			cout << "1 Show all strings" << endl;
-			ShowAllStrings(strings, stringsAmount);
+			showAllStrings(strings, stringsAmount);
 			system("pause");
 			break;
 		case '2':
@@ -38,7 +38,7 @@ int main(){
 		case '3':
 		{
 			system("cls");
-			Operations(strings, stringsAmount);
+			operationsWithStrings(strings, stringsAmount);
 			system("pause");
 			break;
 		}
