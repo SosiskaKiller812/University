@@ -12,7 +12,7 @@ int getDistance(LinkedList &cities){
 	cout << "Enter city or distance" << endl;
 	String city;
 	cin.clear();
-	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cin.ignore(10000, '\n');
 	input(city);
 	if(isInt(city)){
 		int distance = myStoi(city);

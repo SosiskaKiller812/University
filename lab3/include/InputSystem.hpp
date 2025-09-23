@@ -1,6 +1,9 @@
 #pragma once
 
 #include <iostream>
+#include <cfloat>   
+#include <climits>   
+
 #include "String.hpp"
 
 bool isInt(const String &str);

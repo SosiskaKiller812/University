@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring> 
 
 #include "Utilities.hpp"
 #include "String.hpp"
@@ -65,7 +66,7 @@ void input(String &string){
 	}
 
 	if(cin.rdbuf()->in_avail() > 0){
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cin.ignore(10000, '\n');
 	}
 
 	char ch;
