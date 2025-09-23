@@ -35,9 +35,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=sosiskakiller812_lab1
-            -Dsonar.organization=${{ env.SONAR_ORG }}
-            -Dsonar.sources=lab1
-            -Dsonar.cfamily.compile-commands=lab1/build_wrapper/compile_commands.json
+           -Dsonar.projectKey=sosiskakiller812_lab1
+           -Dsonar.organization=${{ env.SONAR_ORG }}
+           -Dsonar.sources=lab1
+           -Dsonar.cfamily.compile-commands=lab1/build_wrapper/compile_commands.json
+           -Dsonar.coverage.exclusions=**
+           -Dsonar.cfamily.skipCoverage=true
+           -Dsonar.exclusions=**/build/**,**/build_wrapper/**,**/CMakeFiles/**
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
