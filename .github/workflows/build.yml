@@ -50,7 +50,7 @@ jobs:
             -Dsonar.sources=lab1
             -Dsonar.cfamily.compile-commands=lab1/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
-            -Dsonar.inclusions=lab2/src/**,lab2/include/** 
+            -Dsonar.inclusions=lab1/src/**,lab1/include/** 
             -Dsonar.cfamily.skipCoverage=true
 
       - name: SonarCloud scan lab2
