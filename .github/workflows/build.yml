@@ -1,5 +1,4 @@
 name: Build & SonarCloud
-
 on:
   push:
     branches:
@@ -10,6 +9,10 @@ on:
 jobs:
   build-and-scan:
     runs-on: ubuntu-latest
+    env:
+      SONAR_ORG: sosiskakiller812
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,27 +23,21 @@ jobs:
         uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
 
       - name: Build lab1
-        timeout-minutes: 15
         run: |
-          cd lab1
-          mkdir -p build
-          cd build
-          cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-          build-wrapper-linux-x86-64 --out-dir ../build_wrapper make
-          echo "Build files:"
-          ls -la ../build_wrapper/
+          rm -rf lab1/build
+          mkdir lab1/build
+          cmake -S lab1 -B lab1/build 
+          build-wrapper-linux-x86-64 --out-dir lab1/build_wrapper cmake --build lab1/build --config Release
 
       - name: SonarCloud scan lab1
-        timeout-minutes: 10
         uses: SonarSource/sonarqube-scan-action@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          projectBaseDir: lab1  # ← РАБОТАЕМ ИЗ ПАПКИ lab1
           args: >
             -Dsonar.projectKey=sosiskakiller812_lab1
-            -Dsonar.organization=sosiskakiller812
-            -Dsonar.sources=src,include
-            -Dsonar.cfamily.build-wrapper-output=build_wrapper
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.sources=lab1
+            -Dsonar.cfamily.compile-commands=lab1/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
