@@ -75,5 +75,3 @@ LinkedList::~LinkedList(){
 	head = nullptr;
 	tail = nullptr;
 }
-
-LinkedList &LinkedList::operator=(const LinkedList &other);
