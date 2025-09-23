@@ -36,7 +36,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          working-directory: lab1  # ← РАБОТАЕМ ИЗ ПАПКИ lab1
+          projectBaseDir: lab1  # ← РАБОТАЕМ ИЗ ПАПКИ lab1
           args: >
             -Dsonar.projectKey=sosiskakiller812_lab1
             -Dsonar.organization=sosiskakiller812
