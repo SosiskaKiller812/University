@@ -49,7 +49,8 @@ jobs:
             -Dsonar.organization=${{ env.SONAR_ORG }}
             -Dsonar.sources=lab1
             -Dsonar.cfamily.compile-commands=lab1/build_wrapper/compile_commands.json
-            -Dsonar.coverage.exclusions=**/build/**
+            -Dsonar.coverage.exclusions=**
+            -Dsonar.inclusions=lab2/src/**,lab2/include/** 
             -Dsonar.cfamily.skipCoverage=true
 
       - name: SonarCloud scan lab2
@@ -62,5 +63,6 @@ jobs:
             -Dsonar.organization=${{ env.SONAR_ORG }}
             -Dsonar.sources=lab2
             -Dsonar.cfamily.compile-commands=lab2/build_wrapper/compile_commands.json
-            -Dsonar.coverage.exclusions=**/build/**
+            -Dsonar.coverage.exclusions=**
+            -Dsonar.inclusions=lab2/src/**,lab2/include/** 
             -Dsonar.cfamily.skipCoverage=true
