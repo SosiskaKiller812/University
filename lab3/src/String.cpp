@@ -66,7 +66,7 @@ void input(String &string){
 	}
 
 	if(cin.rdbuf()->in_avail() > 0){
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 
 	char ch;
