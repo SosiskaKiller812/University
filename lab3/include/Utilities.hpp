@@ -6,7 +6,7 @@
 #include "LinkedList.hpp"
 
 
-int getDistance(LinkedList &cities);
+double getDistance(LinkedList &cities);
 
 void addCity(LinkedList &cities);
 

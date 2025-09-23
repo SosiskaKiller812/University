@@ -9,15 +9,7 @@ LinkedList::Node::Node(const String &str, double value)
 	: string(str), data(value){
 }
 
-LinkedList::LinkedList(){};
-
-LinkedList::LinkedList(const LinkedList &other) {
-    Node *current = other.head;
-    while (current != nullptr) {
-        pushBack(current->string, current->data);
-        current = current->next;
-    }
-}
+LinkedList::LinkedList() = default;
 
 void LinkedList::pushBack(const String &string, double data){
 	auto newNode = new Node(string, data);

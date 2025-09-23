@@ -16,7 +16,6 @@ private:
 
 public:
 	LinkedList();
-	LinkedList(const LinkedList &other);
 	~LinkedList();
 
 	void pushBack(const String &string, double data);

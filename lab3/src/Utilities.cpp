@@ -8,7 +8,7 @@
 using namespace std;
 
 
-int getDistance(LinkedList &cities){
+double getDistance(LinkedList &cities){
 	cout << "Enter city or distance" << endl;
 	String city;
 	input(city);
