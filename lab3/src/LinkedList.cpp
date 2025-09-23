@@ -11,6 +11,14 @@ LinkedList::Node::Node(const String &str, double value)
 
 LinkedList::LinkedList() = default;
 
+LinkedList::LinkedList(const LinkedList &other){
+	Node *current = other.head;
+	while(current != nullptr){
+		pushBack(current->string, current->data);
+		current = current->next;
+	}
+}
+
 void LinkedList::pushBack(const String &string, double data){
 	auto newNode = new Node(string, data);
 	if(head == nullptr){
@@ -60,10 +68,12 @@ void LinkedList::print() const{
 LinkedList::~LinkedList(){
 	Node *curNode = head;
 	while(curNode != nullptr){
-		Node *temp = curNode;      
-		curNode = curNode->next;  
-		delete temp;      
+		Node *temp = curNode;
+		curNode = curNode->next;
+		delete temp;
 	}
 	head = nullptr;
 	tail = nullptr;
 }
+
+LinkedList &LinkedList::operator=(const LinkedList &other);

@@ -16,7 +16,10 @@ private:
 
 public:
 	LinkedList();
+	LinkedList(const LinkedList &other);
 	~LinkedList();
+
+	LinkedList &operator=(const LinkedList &other) = delete;
 
 	void pushBack(const String &string, double data);
 	void pushBack(const char *string, double data);
