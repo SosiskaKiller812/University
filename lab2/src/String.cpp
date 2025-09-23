@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 #include "Utilities.hpp"
 #include "String.hpp"
