@@ -19,20 +19,13 @@ String::String(const char *s) : length(myStrlen(s)), string(new char[length + 1]
 	string[length] = '\0';
 }
 
-String::~String(){
-	delete[] string;
+int String::size() const{
+	return length;
 }
-bool String::operator!=(const String &other) const{
-	if(length != other.length) return true;
-	for(int i = 0; i < length; i++){
-		if(string[i] != other.string[i]) return true;
-	}
-	return false;
-}
+
 std::strong_ordering String::operator<=>(const String &other) const{
 	return strcmp(string, other.string) <=> 0;
 }
-
 
 String &String::operator=(const String &other){
 	if(this == &other){
@@ -51,19 +44,35 @@ String &String::operator=(const String &other){
 	return *this;
 }
 
+bool String::operator==(const String &other) const{
+	return strcmp(string, other.string) == 0;
+}
+
+const char &String::operator[](int index) const{
+	return string[index];
+}
+
+String::~String(){
+	delete[] string;
+}
 
 void print(const String &string){
 	cout << string.string;
 }
 void input(String &string){
+	if(cin.fail()){
+		cin.clear();
+	}
+
+	if(cin.rdbuf()->in_avail() > 0){
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	}
+
 	char ch;
 	int length = 0;
 	int capacity = 10;
 	auto result = new char[capacity];
 
-	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-	cout << "Enter string:" << endl;
 	while(cin.get(ch) && ch != '\n'){
 		if(length + 1 >= capacity){
 			capacity *= 2;
@@ -88,6 +97,4 @@ void input(String &string){
 
 	delete[] result;
 }
-
-
 
