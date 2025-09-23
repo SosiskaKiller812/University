@@ -12,7 +12,6 @@ set(SOURCES
 )
 
 set(HEADERS
-    include/lab1.hpp
     include/Matrix.hpp
     include/InputSystem.hpp
     include/menu.hpp
