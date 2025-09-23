@@ -22,12 +22,23 @@ jobs:
       - name: Install Build Wrapper
         uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
 
+
+
+
       - name: Build lab1
         run: |
           rm -rf lab1/build
           mkdir lab1/build
           cmake -S lab1 -B lab1/build 
           build-wrapper-linux-x86-64 --out-dir lab1/build_wrapper cmake --build lab1/build --config Release
+
+      - name: Build lab2
+        run: |
+          rm -rf lab2/build
+          mkdir lab2/build
+          cmake -S lab2 -B lab2/build 
+          build-wrapper-linux-x86-64 --out-dir lab2/build_wrapper cmake --build lab2/build --config Release
+
       - name: SonarCloud scan lab1
         uses: SonarSource/sonarqube-scan-action@v4
         env:
@@ -41,27 +52,15 @@ jobs:
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
 
-
-
-      - name: Build lab2
-        run: |
-          rm -rf lab2/build
-          mkdir lab2/build
-          cmake -S lab2 -B lab2/build 
-          build-wrapper-linux-x86-64 --out-dir lab1/build_wrapper cmake --build lab2/build --config Release
       - name: SonarCloud scan lab2
         uses: SonarSource/sonarqube-scan-action@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=sosiskakiller812_lab2
+            -Dsonar.projectKey=sosiskakiller812_lab1
             -Dsonar.organization=${{ env.SONAR_ORG }}
             -Dsonar.sources=lab2
             -Dsonar.cfamily.compile-commands=lab2/build_wrapper/compile_commands.json
-            -Dsonar.coverage.exclusions=**
-            -Dsonar.cfamily.skipCoverage=true
-
-            -Dsonar.cfamily.compile-commands=lab1/build_wrapper/compile_commands.json
             -Dsonar.coverage.exclusions=**
             -Dsonar.cfamily.skipCoverage=true
