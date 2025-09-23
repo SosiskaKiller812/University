@@ -58,7 +58,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=sosiskakiller812_lab1
+            -Dsonar.projectKey=sosiskakiller812_lab2
             -Dsonar.organization=${{ env.SONAR_ORG }}
             -Dsonar.sources=lab2
             -Dsonar.cfamily.compile-commands=lab2/build_wrapper/compile_commands.json
