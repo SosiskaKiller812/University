@@ -12,7 +12,10 @@
 using namespace std;
 
 int main(){
-	Transport* transport[3] = {new Car, new Bicycle, new Carriage};
+	auto car = new Car;
+	auto bicycle = new Bicycle;
+	auto carriage = new Carriage;
+	Transport* transport[3] = {car, bicycle, carriage};
 	int currentTransport = 0;
 	while(true){
 		system("cls");

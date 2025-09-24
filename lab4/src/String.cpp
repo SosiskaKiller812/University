@@ -24,14 +24,6 @@ int String::size() const{
 	return length;
 }
 
-bool String::operator!=(const String &other) const{
-	if(length != other.length) return true;
-	for(int i = 0; i < length; i++){
-		if(string[i] != other.string[i]) return true;
-	}
-	return false;
-}
-
 std::strong_ordering String::operator<=>(const String &other) const{
 	return strcmp(string, other.string) <=> 0;
 }

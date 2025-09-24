@@ -15,6 +15,9 @@ protected:
 	explicit Transport(double pricePh, int maxPeoples, double pricePk, double maxKilos, double speed, String transportName);
 public:
 	virtual ~Transport();
+	Transport(const Transport &other);
+	Transport(Transport &&other);
+	Transport& operator=(const Transport &other);
 	double getKmph() const;
 	int getMaxPersons() const;
 	double getMaxWeight() const;
