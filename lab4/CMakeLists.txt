@@ -26,7 +26,7 @@ set(HEADERS
     include/Carriage.hpp
     include/Utilities.hpp
     include/String.hpp
-    include/lab4.hpp
+    include/consts.hpp
 )
 
 add_executable(lab3 ${SOURCES} ${HEADERS})
