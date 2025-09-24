@@ -4,6 +4,8 @@
 
 #include "String.hpp"
 
+const int arraysize = 3;
+
 const double avgPeopleWeight = 60;
 
 const String carriageName{"carriage"};

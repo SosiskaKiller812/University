@@ -8,6 +8,7 @@
 
 #include "Utilities.hpp"
 #include "InputSystem.hpp"
+#include "consts.hpp"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ int main(){
 	auto car = new Car;
 	auto bicycle = new Bicycle;
 	auto carriage = new Carriage;
-	Transport* transport[3] = {car, bicycle, carriage};
+	Transport* transport[arraysize] = {car, bicycle, carriage};
 	int currentTransport = 0;
 	while(true){
 		system("cls");
@@ -42,7 +43,7 @@ int main(){
 			system("pause");
 			break;
 		case '0':
-			for(int i = 0; i < 2; i++){
+			for(int i = 0; i < arraysize; i++){
 				delete transport[i];
 			}
 			return 0;
