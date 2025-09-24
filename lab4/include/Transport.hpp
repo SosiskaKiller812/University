@@ -3,18 +3,21 @@
 #include "String.hpp"
 
 class Transport{
-protected:
+private:
 	double pricePerHuman;
 	double pricePerKilo;
 	int maxPersons;
 	double maxWeight;
 	double kmPh;
 	String name;
+protected:
+	Transport();
+	explicit Transport(double pricePh, int maxPeoples, double pricePk, double maxKilos, double speed, String transportName);
 public:
-	Transport(double pricePh, int maxPeoples, double pricePk, double maxKilos, double speed, String transportName);
-	int getKmph() const;
+	virtual ~Transport();
+	double getKmph() const;
 	int getMaxPersons() const;
-	int getMaxWeight() const;
+	double getMaxWeight() const;
 	String getName() const;
 	virtual double getTime(double distance, int persons, double exraWeight) const = 0;
 	virtual double getPrice(double distance, int persons, double exraWeight) const = 0;

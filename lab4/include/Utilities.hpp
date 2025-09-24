@@ -6,9 +6,9 @@
 void getTransportTime(const Transport *transport);
 void getTransportCost(const Transport *transport);
 
-int getDistance();
+double getDistance();
 int getPersonsAmount(const Transport *transport);
-int getExtraWeight(const Transport *transport);
+double getExtraWeight(const Transport *transport);
 
 int myStoi(const String &str);
 
