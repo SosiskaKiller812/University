@@ -11,11 +11,18 @@ Transport::Transport(double pricePh, int maxPeoples, double pricePk, double maxK
 
 Transport &Transport::operator=(const Transport &other) = default;
 
-Transport::~Transport() = default;
+Transport::~Transport(){
+	pricePerHuman = 0;
+	pricePerKilo = 0;
+	maxPersons = 0;
+	maxWeight = 0;
+	kmPh = 0;
+	name = String();
+}
 
 Transport::Transport(const Transport &other) = default;
 
-Transport::Transport(Transport &&other) = default;
+Transport::Transport(Transport &&other) noexcept = default;
 
 double Transport::getKmph() const{ return kmPh; }
 

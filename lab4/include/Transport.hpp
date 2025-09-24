@@ -16,7 +16,7 @@ protected:
 public:
 	virtual ~Transport();
 	Transport(const Transport &other);
-	Transport(Transport &&other);
+	Transport(Transport &&other) noexcept;
 	Transport& operator=(const Transport &other);
 	double getKmph() const;
 	int getMaxPersons() const;
