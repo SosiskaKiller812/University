@@ -1,10 +1,13 @@
 ﻿#include <iostream>
 
 #include "CargoTransport.hpp"
-#include "OtherTransport.hpp"
+#include "Plane.hpp"
+#include "Train.hpp"
+#include "Auto.hpp"
 #include "InputSystem.hpp"
 #include "Utilities.hpp"
 #include "LinkedList.hpp"
+#include "consts.hpp"
 
 using namespace std;
 
@@ -17,15 +20,15 @@ int main(){
 	cities.pushBack("Oshmyani", 129);
 	cities.pushBack("Moscow", 715);
 
-	Auto car;
-	Plane plane;
-	Train train;
-	CargoTransport cars[3] = {car, plane, train};
+	auto car = new Auto;
+	auto plane = new Plane;
+	auto train = new Train;
+	CargoTransport* transports[kArraySize] = {car, plane, train};
 	int currentTransport = 0;
 	while(true){
 		system("cls");
 		cout << "Current transport ->";
-		print(cars[currentTransport].getName());
+		print(transports[currentTransport]->getName());
 		cout << endl << "1 Choose transport" << endl << "2 Time" << endl << "3 Price" << endl << "4 add City" << endl << "5 Show cities" << endl << "0 Exit" << endl;
 		char option;
 		cin >> option;
@@ -37,12 +40,12 @@ int main(){
 			break;
 		case '2':
 			cout << "2 Time" << endl;
-			cout << cars[currentTransport].getTime(getDistance(cities)) << " minutes" << endl;
+			cout << transports[currentTransport]->getTime(getDistance(cities)) << " minutes" << endl;
 			system("pause");
 			break;
 		case '3':
 			cout << "3 Price" << endl;
-			cout << cars[currentTransport].getPrice(getDistance(cities)) << " $" << endl;
+			cout << transports[currentTransport]->getPrice(getDistance(cities)) << " $" << endl;
 			system("pause");
 			break;
 		case '4':
@@ -55,11 +58,11 @@ int main(){
 			system("pause");
 			break;
 		case '0':
+			freeCargoArray(transports, kArraySize);
 			return 0;
 		default:
 			cout << "Incorrect input!" << endl;
 			system("pause");
 		}
 	}
-
 }

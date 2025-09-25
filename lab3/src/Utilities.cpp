@@ -4,6 +4,7 @@
 #include "InputSystem.hpp"
 #include "String.hpp"
 #include "LinkedList.hpp"
+#include "CargoTransport.hpp"
 
 using namespace std;
 
@@ -12,8 +13,8 @@ double getDistance(LinkedList &cities){
 	cout << "Enter city or distance" << endl;
 	String city;
 	input(city);
-	if(isInt(city)){
-		int distance = myStoi(city);
+	if(isDouble(city)){
+		double distance = myStod(city);
 		return distance;
 	}
 	auto node = cities.find(city);
@@ -144,4 +145,11 @@ int myStrcmp(const char* str1, const char* str2) {
     }
 
     return str1[i] - str2[i];
+}
+
+void freeCargoArray(CargoTransport* transport[], int size){
+	for(int i = 0; i < size; i++){
+		delete transport[i];
+		transport[i] = nullptr;
+	}
 }
