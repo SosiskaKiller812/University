@@ -24,7 +24,7 @@ set(HEADERS
     include/InputSystem.hpp
     include/LinkedList.hpp
     include/Auto.hpp
-    include/Car.hpp
+    include/Plane.hpp
     include/Train.hpp
     include/consts.hpp
     include/String.hpp
