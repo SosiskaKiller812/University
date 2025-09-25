@@ -23,10 +23,10 @@ set(HEADERS
     include/CargoTransport.hpp
     include/InputSystem.hpp
     include/LinkedList.hpp
-    src/Auto.hpp
-    src/Car.hpp
-    src/Train.hpp
-    src/consts.hpp
+    include/Auto.hpp
+    include/Car.hpp
+    include/Train.hpp
+    include/consts.hpp
     include/String.hpp
     include/Utilities.hpp
 )
