@@ -11,7 +11,9 @@ set(SOURCES
     src/CargoTransport.cpp
     src/InputSystem.cpp
     src/LinkedList.cpp
-    src/OtherTransport.cpp
+    src/Auto.cpp
+    src/Plane.cpp
+    src/Train.cpp
     src/String.cpp
     src/Utilities.cpp
     src/lab3.cpp
@@ -21,7 +23,10 @@ set(HEADERS
     include/CargoTransport.hpp
     include/InputSystem.hpp
     include/LinkedList.hpp
-    include/OtherTransport.hpp
+    src/Auto.hpp
+    src/Car.hpp
+    src/Train.hpp
+    src/consts.hpp
     include/String.hpp
     include/Utilities.hpp
 )
