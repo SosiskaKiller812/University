@@ -13,12 +13,7 @@ using namespace std;
 
 int main(){
 	LinkedList cities;
-	cities.pushBack("Brest", 344);
-	cities.pushBack("Soligorsk", 155);
-	cities.pushBack("Gomel", 311);
-	cities.pushBack("Svetlogorsk", 217);
-	cities.pushBack("Oshmyani", 129);
-	cities.pushBack("Moscow", 715);
+	addStartedCities(cities);
 
 	auto car = new Auto;
 	auto plane = new Plane;
@@ -27,9 +22,8 @@ int main(){
 	int currentTransport = 0;
 	while(true){
 		system("cls");
-		cout << "Current transport ->";
-		print(transports[currentTransport]->getName());
-		cout << endl << "1 Choose transport" << endl << "2 Time" << endl << "3 Price" << endl << "4 add City" << endl << "5 Show cities" << endl << "0 Exit" << endl;
+		showCurrentTransport(transports[currentTransport]->getName());
+		cout << "1 Choose transport" << endl << "2 Time" << endl << "3 Price" << endl << "4 add City" << endl << "5 Show cities" << endl << "0 Exit" << endl;
 		char option;
 		cin >> option;
 		switch(option){

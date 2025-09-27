@@ -5,23 +5,23 @@
 #include "consts.hpp"
 
 
-Bicycle::Bicycle() : Transport(bicyclePricePh, bicycleMaxPeoples, bicyclePricePk, bicycleMaxKilos, bicycleSpeed, bicycleName){}
+Bicycle::Bicycle() : Transport(kBicyclePricePh, kBicycleMaxPeoples, kBicyclePricePk, kBicycleMaxKilos, kBicycleSpeed, kBicycleName){}
 
 double Bicycle::getTime(double distance, int persons, double extraWeight) const{
-	if(persons > bicycleMaxPeoples || persons * avgPeopleWeight > bicycleMaxKilos){
+	if(persons > kBicycleMaxPeoples || persons * kAvgPeopleWeight > kBicycleMaxKilos){
 		std::cout << "Too much peoples or weight!!";
 		return 0.0;
 	}
 
-	double kWeight = sqrt(persons * avgPeopleWeight / (persons * avgPeopleWeight + extraWeight));
-	return distance / (bicycleSpeed * kWeight);
+	double kWeight = sqrt(persons * kAvgPeopleWeight / (persons * kAvgPeopleWeight + extraWeight));
+	return distance / (kBicycleSpeed * kWeight);
 }
 
 double Bicycle::getPrice(double distance, int persons, double extraWeight) const{
-	if(persons > bicycleMaxPeoples || persons * avgPeopleWeight > bicycleMaxKilos){
+	if(persons > kBicycleMaxPeoples || persons * kAvgPeopleWeight > kBicycleMaxKilos){
 		std::cout << "Too much peoples or weight!!";
 		return 0.0;
 	}
-	return bicyclePricePh * persons + extraWeight * bicyclePricePk;
+	return kBicyclePricePh * persons + extraWeight * kBicyclePricePk;
 }
 

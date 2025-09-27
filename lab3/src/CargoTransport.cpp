@@ -2,9 +2,9 @@
 #include "String.hpp"
 
 
-CargoTransport::CargoTransport(int price, int speed, String transportName) : pricePh(price), kmPh(speed), name(transportName){}
+CargoTransport::CargoTransport(double price, double speed, String transportName) : PricaPk(price), kmPh(speed), name(transportName){}
 
-int CargoTransport::getKmph() const{
+double CargoTransport::getKmph() const{
 	return kmPh;
 }
 
@@ -17,7 +17,7 @@ double CargoTransport::getTime(double distance) const{
 
 double CargoTransport::getPrice(double distance) const{
 	if(distance > 0){
-		return getTime(distance) * pricePh;
+		return getTime(distance) * PricaPk;
 	}
 	return 0;
 }

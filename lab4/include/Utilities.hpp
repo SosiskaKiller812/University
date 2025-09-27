@@ -3,6 +3,7 @@
 #include "String.hpp"
 #include "Transport.hpp"
 
+void showCurrentTransport(const String name);
 void getTransportTime(const Transport *transport);
 void getTransportCost(const Transport *transport);
 
@@ -17,3 +18,5 @@ double myStod(const String &str);
 int myStrlen(const char *str);
 
 int myStrcmp(const char *str1, const char *str2);
+
+void freeTransport(Transport *transport[], int size);

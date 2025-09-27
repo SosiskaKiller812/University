@@ -6,6 +6,9 @@
 #include "LinkedList.hpp"
 #include "CargoTransport.hpp"
 
+void addStartedCities(LinkedList &cities);
+
+void showCurrentTransport(const String name);
 
 double getDistance(LinkedList &cities);
 

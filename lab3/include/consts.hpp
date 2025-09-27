@@ -4,14 +4,14 @@
 
 const int kArraySize = 3;
 
-const String kPlaneName{"Plane"};
-const int kPlaneSpeed = 1000;
-const int kPlanePrice = 70;
+const String kPlaneName {"Plane"};
+const double kPlaneSpeed = 1000;
+const double kPlanePrice = 8;
 
 const String kTrainName {"Train"};
-const int kTrainSpeed = 80;
-const int kTrainPrice = 30;
+const double kTrainSpeed = 80;
+const double kTrainPrice = 1.5;
 
 const String kAutoName {"Auto"};
-const int kAutoSpeed = 100;
-const int kAutoPrice = 60;
+const double kAutoSpeed = 100;
+const double kAutoPrice = 2;

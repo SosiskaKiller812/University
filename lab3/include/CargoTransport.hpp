@@ -4,12 +4,12 @@
 
 class CargoTransport{
 private:
-	int pricePh;
-	int kmPh;
+	double PricaPk;
+	double kmPh;
 	String name;
 public:
-	CargoTransport(int price, int speed, String transportName);
-	int getKmph() const;
+	CargoTransport(double price, double speed, String transportName);
+	double getKmph() const;
 	double getTime(double distance) const;
 	double getPrice(double distance) const;
 	String getName() const;

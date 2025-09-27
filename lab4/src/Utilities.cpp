@@ -10,6 +10,12 @@
 
 using namespace std;
 
+void showCurrentTransport(const String name){
+	cout << "Current transport ->";
+	print(name);
+	cout << endl;
+}
+
 void getTransportTime(const Transport *transport){
 	double distance = getDistance();
 	int persons = getPersonsAmount(transport);
@@ -140,4 +146,11 @@ int myStrcmp(const char *str1, const char *str2){
 	}
 
 	return str1[i] - str2[i];
+}
+
+void freeTransport(Transport *transport[], int size){
+	for(int i = 0; i < size; i++){
+		delete transport[i];
+		transport[i] = nullptr;
+	}
 }

@@ -8,6 +8,20 @@
 
 using namespace std;
 
+void addStartedCities(LinkedList &cities){
+	cities.pushBack("Brest", 344);
+	cities.pushBack("Soligorsk", 155);
+	cities.pushBack("Gomel", 311);
+	cities.pushBack("Svetlogorsk", 217);
+	cities.pushBack("Oshmyani", 129);
+	cities.pushBack("Moscow", 715);
+}
+
+void showCurrentTransport(const String name){
+	cout << "Current transport ->";
+	print(name);
+	cout << endl;
+}
 
 double getDistance(LinkedList &cities){
 	cout << "Enter city or distance" << endl;
