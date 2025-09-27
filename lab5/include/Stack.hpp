@@ -15,7 +15,7 @@ public:
 	Stack() = default;
 	explicit Stack(T value);
 	Stack(const Stack &other);
-	Stack &operator=(const Stack &other) = default;
+	Stack &operator=(const Stack &other);
 	void push(T value);
 	T pop();
 	~Stack();
@@ -26,6 +26,17 @@ public:
 template<typename T>
 bool Stack<T>::empty(){
 	return top == nullptr;
+}
+
+template<typename T>
+Stack<T> &Stack<T>::operator=(const Stack &other){
+	auto otherNode = other.top;
+	while(otherNode != nullptr){
+		auto *newNode = new Node(otherNode.data);
+		newNode->next = top;
+		top = newNode;
+		otherNode = otherNode->next;
+	}
 }
 
 template<typename T>
