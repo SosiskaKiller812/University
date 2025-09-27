@@ -5,15 +5,17 @@ class Stack{
 private:
 	struct Node{
 		T data;
-		Node* next = nullptr;
-		Node(T value) : data(value){};
+		Node *next = nullptr;
+		explicit Node(T value) : data(value){};
 	};
 
-	Node* top = nullptr;
+	Node *top = nullptr;
 public:
 	bool empty();
 	Stack() = default;
-	Stack(T value);
+	explicit Stack(T value);
+	Stack(const Stack &other);
+	Stack &operator=(const Stack &other) = default;
 	void push(T value);
 	T pop();
 	~Stack();
@@ -24,6 +26,17 @@ public:
 template<typename T>
 bool Stack<T>::empty(){
 	return top == nullptr;
+}
+
+template<typename T>
+Stack<T>::Stack(const Stack &other){
+	auto otherNode = other.top;
+	while(otherNode != nullptr){
+		auto *newNode = new Node(otherNode.data);
+		newNode->next = top;
+		top = newNode;
+		otherNode = otherNode->next;
+	}
 }
 
 template<typename T>

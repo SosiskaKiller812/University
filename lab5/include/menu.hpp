@@ -8,8 +8,6 @@
 #include "menuText.hpp"
 
 
-using namespace std;
-
 template<typename T>
 void mainMenu(){
 	Stack<T> stack;
@@ -19,7 +17,7 @@ void mainMenu(){
 		showMenuChoice();
 
 		char option;
-		cin >> option;
+		std::cin >> option;
 
 		switch(option){
 		case '1':
@@ -39,7 +37,7 @@ void mainMenu(){
 		case '0':
 			return;
 		default:
-			cout << "Invalid input!" << endl;
+			std::cout << "Invalid input!" << std::endl;
 		}
 	}
 }
@@ -49,7 +47,7 @@ void startWorkWithStack(){
 
 	char option;
 	do{
-		cin >> option;
+		std::cin >> option;
 	}
 	while(option < '1' || option > '4');
 
@@ -63,9 +61,9 @@ void startWorkWithStack(){
 		mainMenu<char>();
 	}
 	else if(option == '4'){
-		mainMenu<string>();
+		mainMenu<std::string>();
 	}
 	else{
-		cout << "Invalid value, try again" << endl;
+		std::cout << "Invalid value, try again" << std::endl;
 	}
 }

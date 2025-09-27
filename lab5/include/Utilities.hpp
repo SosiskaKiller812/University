@@ -4,16 +4,14 @@
 
 #include "Stack.hpp"
 
-using namespace std;
-
 template <class T>
 T getValue(){
-	if(cin.fail()){
-		cin.clear();
+	if(std::cin.fail()){
+		std::cin.clear();
 	}
 
-	if(cin.rdbuf()->in_avail() > 0){
-		cin.ignore(10000, '\n');
+	if(std::cin.rdbuf()->in_avail() > 0){
+		std::cin.ignore(10000, '\n');
 	}
 
 	T value;
@@ -30,27 +28,27 @@ T getValue(){
 
 		std::cin.clear();
 		while(std::cin.get() != '\n' && !std::cin.eof());
-		std::cout << "\nError, invalid input. Please try again: " << endl;
+		std::cout << "\nError, invalid input. Please try again: " << std::endl;
 	}
 }
 
 template <class T>
 void popIfPossible(Stack<T> &stack){
 	if(stack.empty()){
-		cout << "Stack already empty" << endl;
+		std::cout << "Stack already empty" << std::endl;
 		return;
 	}
-	cout << stack.pop() << endl;
+	std::cout << stack.pop() << std::endl;
 }
 
 template <class T>
 void popAllElements(Stack<T> &stack){
 	if(stack.empty()){
-		cout << "Stack already empty" << endl;
+		std::cout << "Stack already empty" << std::endl;
 		return;
 	}
-	cout << "All elements from stack:" << endl;
+	std::cout << "All elements from stack:" << std::endl;
 	while(!stack.empty()){
-		cout << stack.pop() << endl;
+		std::cout << stack.pop() << std::endl;
 	}
 }
