@@ -34,8 +34,7 @@ double getDistance(LinkedList &cities){
 			return distance;
 		}
 
-		auto node = cities.find(city);
-		if(node != nullptr){
+		if(auto node = cities.find(city); node != nullptr){
 			return node->data;
 		}
 
@@ -47,6 +46,7 @@ double getDistance(LinkedList &cities){
 		print(city);
 		cout << "' not found\n";
 	}
+	return 0.0;
 }
 
 void addCity(LinkedList &cities){
