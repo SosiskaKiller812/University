@@ -16,7 +16,7 @@ set(SOURCES
     src/Train.cpp
     src/String.cpp
     src/Utilities.cpp
-    src/lab3.cpp
+    src/lab6.cpp
 )
 
 set(HEADERS
