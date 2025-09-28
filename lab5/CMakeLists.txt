@@ -19,4 +19,4 @@ set(HEADERS
     include/menu.hpp
 )
 
-add_executable(lab3 ${SOURCES} ${HEADERS})
+add_executable(lab5 ${SOURCES} ${HEADERS})

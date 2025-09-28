@@ -29,4 +29,4 @@ set(HEADERS
     include/consts.hpp
 )
 
-add_executable(lab3 ${SOURCES} ${HEADERS})
+add_executable(lab4 ${SOURCES} ${HEADERS})
