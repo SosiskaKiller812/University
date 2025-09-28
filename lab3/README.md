@@ -3,4 +3,4 @@
 ## Мое задание
 > Создать базовый класс «грузоперевозчик» и производные классы «Самолёт», «Поезд», «Автомобиль». Определить время и стоимость перевозки для указанных городов и расстояний. 
 > 
-### Ссылка на результат SonarQube Cloud [тут](https://sonarcloud.io/summary/new_code?id=SosiskaKiller812_University)
+### Ссылка на результат SonarQube Cloud [тут](https://sonarcloud.io/project/overview?id=sosiskakiller812_lab3)

@@ -3,4 +3,4 @@
 ## Мое задание
 > Реализовать класс String для работы со строками символов. Перегрузить операторы <, >, !=, <=, >=. Предоставить конструктор копирования. Определить friend функции для операций ввода-вывода в поток.
 > 
-### Ссылка на результат SonarQube Cloud [тут](https://sonarcloud.io/summary/new_code?id=SosiskaKiller812_University)
+### Ссылка на результат SonarQube Cloud [тут](https://sonarcloud.io/project/overview?id=sosiskakiller812_lab2)
