@@ -2,7 +2,6 @@
 #include <iostream>
 
 #include "InputSystem.hpp"
-#include "Utilities.hpp"
 
 using namespace std;
 
