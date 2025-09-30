@@ -64,11 +64,11 @@ BusFlight *BusFlight::loadAllFlights(const std::string &filename, int &count){
 	return buses;
 }
 
-BusFlight *BusFlight::saveAllFlights(const std::string &filename, BusFlight* flights, const int count){
+void *BusFlight::saveAllFlights(const std::string &filename, BusFlight* flights, const int count){
 	std::ofstream ofile(filename);
 	if(!ofile.is_open()){
 		std::cout << "Error with opening file!" << std::endl;
-		return nullptr;
+		return;
 	}
 
 	for(int i = 0; i < count; i++){

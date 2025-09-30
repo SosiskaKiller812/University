@@ -23,7 +23,7 @@ public:
 	BusFlight& operator=(const BusFlight &obj);
 
 	static BusFlight *loadAllFlights(const std::string &filename, int &count);
-	static BusFlight *saveAllFlights(const std::string &filename, BusFlight* flights, const int count);
+	static void *saveAllFlights(const std::string &filename, BusFlight* flights, const int count);
 
 	Time getDepartureTime() const{ return departureTime; };
 };
