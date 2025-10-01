@@ -112,14 +112,23 @@ BusFlight *getFlightsByDepartureTime(const BusFlight *buses, const int count, Ti
 	if(newSize == 0)
 		return nullptr;
 
-	BusFlight *result = new BusFlight[newSize];
+	auto result = new BusFlight[newSize];
+
 	int index = 0;
-	for(int i = 0; i < count && index < newSize; i++){
+	for(int i = 0; i < count; i++){
 		if(buses[i].getDepartureTime() == time){
-			result[index] = buses[i];
-			index++;
+			if(index > newSize){
+				auto newResult = new BusFlight[index];
+				for(int j = 0; j < newSize; j++){
+					newResult[j] = result[j];
+				}
+				delete[] result;
+				result = newResult;
+			}
+			result[index++] = BusFlight(buses[i]);
 		}
 	}
+
 	return result;
 }
 
