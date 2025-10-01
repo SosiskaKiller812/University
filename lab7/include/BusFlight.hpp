@@ -46,11 +46,12 @@ public:
 	}
 
 	BusFlight &operator=(const BusFlight &obj);
+	BusFlight(const BusFlight &other);
 	~BusFlight();
 
 
 	static BusFlight *loadAllFlights(const std::string &filename, int &count);
-	static void saveAllFlights(const std::string &filename, BusFlight *flights, const int count);
+	static void saveAllFlights(const std::string &filename, const BusFlight *flights, int count);
 
 	Time getDepartureTime() const{ return departureTime; };
 };

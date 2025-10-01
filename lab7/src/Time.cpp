@@ -63,6 +63,10 @@ Time Time::fillTimeByConsole(){
 	return Time(hours, minutes, seconds);
 }
 
+Time::Time(const Time &other)
+	: hours(other.hours), minutes(other.minutes), seconds(other.seconds){
+}
+
 Time::~Time(){
 	hours = 0;
 	minutes = 0;

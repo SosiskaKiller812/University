@@ -37,7 +37,7 @@ BusFlight *BusFlight::loadAllFlights(const std::string &filename, int &count){
 	return buses;
 }
 
-void BusFlight::saveAllFlights(const std::string &filename, BusFlight *flights, const int count){
+void BusFlight::saveAllFlights(const std::string &filename, const BusFlight *flights, int count){
 	std::ofstream ofile(filename);
 	if(!ofile.is_open()){
 		std::cout << "Error with opening file!" << std::endl;
@@ -52,6 +52,14 @@ void BusFlight::saveAllFlights(const std::string &filename, BusFlight *flights, 
 }
 
 BusFlight &BusFlight::operator=(const BusFlight &obj) = default;
+
+BusFlight::BusFlight(const BusFlight &other)
+	: flightNumber(other.flightNumber),
+	busType(other.busType),
+	destination(other.destination),
+	departureTime(other.departureTime),
+	arrivalTime(other.arrivalTime){
+}
 
 BusFlight::~BusFlight(){
 	flightNumber = -1;
