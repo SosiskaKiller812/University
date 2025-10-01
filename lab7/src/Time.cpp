@@ -83,3 +83,9 @@ Time Time::fillTimeByConsole(){
 
 	return Time(hours, minutes, seconds);
 }
+
+Time::~Time(){
+	hours = 0;
+	minutes = 0;
+	seconds = 0;
+}
