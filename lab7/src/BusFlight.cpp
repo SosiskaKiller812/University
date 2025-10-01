@@ -6,33 +6,6 @@
 #include "BusFlight.hpp"
 #include "Time.hpp"
 
-
-std::ostream &operator<<(std::ostream &os, const BusFlight &obj){
-	os << std::left
-		<< "|" << std::setw(15) << obj.flightNumber
-		<< "|" << std::setw(15) << obj.busType
-		<< "|" << std::setw(15) << obj.destination
-		<< "|" << std::setw(15) << obj.departureTime
-		<< "|" << std::setw(15) << obj.arrivalTime << "|" << std::endl;
-	return os;
-}
-
-std::istream &operator>>(std::istream &is, BusFlight &obj){
-	char delimiter;
-	is >> delimiter;
-	is >> obj.flightNumber;
-	is >> delimiter;
-	is >> obj.busType;
-	is >> delimiter;
-	is >> obj.destination;
-	is >> delimiter;
-	is >> obj.departureTime;
-	is >> delimiter;
-	is >> obj.arrivalTime;
-	is >> delimiter;
-	return is;
-}
-
 BusFlight *BusFlight::loadAllFlights(const std::string &filename, int &count){
 	std::ifstream ifile(filename);
 	if(!ifile.is_open()){
@@ -65,7 +38,7 @@ BusFlight *BusFlight::loadAllFlights(const std::string &filename, int &count){
 	return buses;
 }
 
-void BusFlight::saveAllFlights(const std::string &filename, BusFlight *&flights, const int count){
+void BusFlight::saveAllFlights(const std::string &filename, BusFlight *flights, const int count){
 	std::ofstream ofile(filename);
 	if(!ofile.is_open()){
 		std::cout << "Error with opening file!" << std::endl;

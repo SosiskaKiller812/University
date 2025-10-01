@@ -15,8 +15,17 @@ public:
 	Time &operator=(const Time &obj);
 	~Time();
 	bool operator==(const Time &obj) const;
-	friend std::istream &operator>>(std::istream &is, Time &obj);
-	friend std::ostream &operator<<(std::ostream &os, const Time &obj);
+
+	friend std::ostream &operator<<(std::ostream &os, const Time &obj){
+		os << createStringTime(obj);
+		return os;
+	}
+	friend std::istream &operator>>(std::istream &is, Time &time){
+		char colon;
+		is >> time.hours >> colon >> time.minutes >> colon >> time.seconds;
+		return is;
+	}
+
 	friend std::string createStringTime(const Time &obj);
 	static Time fillTimeByConsole();
 };

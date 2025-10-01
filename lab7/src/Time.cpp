@@ -43,33 +43,12 @@ std::string createStringTime(const Time &obj){
 	return time;
 }
 
-std::ostream &operator<<(std::ostream &os, const Time &obj){
-	os << createStringTime(obj);
-	return os;
-}
-
-std::istream &operator>>(std::istream &is, Time &time){
-	char colon;
-	is >> time.hours >> colon >> time.minutes >> colon >> time.seconds;
-	return is;
-}
-
-Time &Time::operator=(const Time &obj){
-	hours = obj.hours;
-	minutes = obj.minutes;
-	seconds = obj.seconds;
-	return *this;
-}
+Time &Time::operator=(const Time &obj) = default;
 
 bool Time::operator==(const Time &obj) const{
-	if(hours == obj.hours){
-		if(minutes == obj.minutes){
-			if(seconds == obj.seconds) return true;
-		}
-	}
+	if(hours == obj.hours && minutes == obj.minutes && seconds == obj.seconds) return true;
 	return false;
 }
-
 Time Time::fillTimeByConsole(){
 	std::cout << "Enter hours" << std::endl;
 	int hours;

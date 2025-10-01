@@ -14,19 +14,42 @@ private:
 	Time departureTime;
 	Time arrivalTime;
 public:
-	BusFlight(int flightNum, std::string &busT, std::string &dest, Time &departureT, Time &arrivalT)
+	BusFlight(int flightNum, const std::string &busT, const std::string &dest, const Time &departureT, const Time &arrivalT)
 		: flightNumber(flightNum), busType(busT), destination(dest), departureTime(departureT), arrivalTime(arrivalT){
 	};
 	BusFlight() : flightNumber(0){};
 
-	friend std::istream &operator>>(std::istream &is, BusFlight &obj);
-	friend std::ostream &operator<<(std::ostream &os, const BusFlight &obj);
+	friend std::istream &operator>>(std::istream &is, BusFlight &obj){
+		char delimiter;
+		is >> delimiter;
+		is >> obj.flightNumber;
+		is >> delimiter;
+		is >> obj.busType;
+		is >> delimiter;
+		is >> obj.destination;
+		is >> delimiter;
+		is >> obj.departureTime;
+		is >> delimiter;
+		is >> obj.arrivalTime;
+		is >> delimiter;
+		return is;
+	}
+	friend std::ostream &operator<<(std::ostream &os, const BusFlight &obj){
+		os << std::left
+			<< "|" << std::setw(15) << obj.flightNumber
+			<< "|" << std::setw(15) << obj.busType
+			<< "|" << std::setw(15) << obj.destination
+			<< "|" << std::setw(15) << obj.departureTime
+			<< "|" << std::setw(15) << obj.arrivalTime << "|" << std::endl;
+		return os;
+	}
+
 	BusFlight &operator=(const BusFlight &obj);
 	~BusFlight();
 
 
 	static BusFlight *loadAllFlights(const std::string &filename, int &count);
-	static void saveAllFlights(const std::string &filename, BusFlight *&flights, const int count);
+	static void saveAllFlights(const std::string &filename, BusFlight *flights, const int count);
 
 	Time getDepartureTime() const{ return departureTime; };
 };

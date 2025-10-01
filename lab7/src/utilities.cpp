@@ -84,7 +84,7 @@ BusFlight *createBusFlight(){
 void addFlight(BusFlight *&buses, int &count){
 	auto newFlight = createBusFlight();
 
-	BusFlight *newBuses = new BusFlight[count + 1];
+	auto newBuses = new BusFlight[count + 1];
 
 	for(int i = 0; i < count; i++){
 		newBuses[i] = buses[i];
@@ -112,12 +112,12 @@ BusFlight *getFlightsByDepartureTime(const BusFlight *buses, const int count, Ti
 	if(resultSize == 0)
 		return nullptr;
 
-	BusFlight *result = new BusFlight[resultSize];
+	auto result = new BusFlight[resultSize];
+
 	int index = 0;
 	for(int i = 0; i < count; i++){
 		if(buses[i].getDepartureTime() == time){
-			result[index] = buses[i];
-			index++;
+			result[index++] = buses[i];
 		}
 	}
 
@@ -129,7 +129,7 @@ void showFlightsByDepartureTime(const BusFlight *buses, const int count){
 	Time time = Time::fillTimeByConsole();
 	system("cls");
 	int newSize = 0;
-	BusFlight * flights = getFlightsByDepartureTime(buses, count, time, newSize);
+	auto flights = getFlightsByDepartureTime(buses, count, time, newSize);
 	std::cout << std::internal << std::setw(45) << "All flights at " << time << std::endl;
 	buildTableTop();
 
