@@ -45,9 +45,9 @@ public:
 		return os;
 	}
 
-	BusFlight &operator=(const BusFlight &obj);
+	BusFlight &operator=(const BusFlight &obj) = default;
 	BusFlight(const BusFlight &other) = default;
-	~BusFlight();
+	~BusFlight() = default;
 
 
 	static BusFlight *loadAllFlights(const std::string &filename, int &count);

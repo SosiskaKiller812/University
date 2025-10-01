@@ -50,21 +50,3 @@ void BusFlight::saveAllFlights(const std::string &filename, const BusFlight *fli
 
 	ofile.close();
 }
-
-BusFlight &BusFlight::operator=(const BusFlight &obj) = default;
-
-//BusFlight::BusFlight(const BusFlight &other)
-//	: flightNumber(other.flightNumber),
-//	busType(other.busType),
-//	destination(other.destination),
-//	departureTime(other.departureTime),
-//	arrivalTime(other.arrivalTime){
-//}
-
-BusFlight::~BusFlight(){
-	flightNumber = -1;
-	busType = "-1";
-	destination = "-1";
-	departureTime = Time();
-	arrivalTime = Time();
-}
