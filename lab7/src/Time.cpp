@@ -7,38 +7,26 @@
 #include <InputSystem.hpp>
 
 std::string createStringTime(const Time &obj){
-	std::string time(kTimeStringSize, ' ');
+	std::string time;
 
 	if(obj.hours < 10){
-		time[0] = '0';
-		time[1] = obj.hours + '0';
+		time = '0';
 	}
-	else{
-		time[0] = (obj.hours / 10) + '0';
-		time[1] = (obj.hours % 10) + '0';
-	}
+	time += std::to_string(obj.hours);
 
-	time[2] = kTimeDelimiter;
+	time += kTimeDelimiter;
 
 	if(obj.minutes < 10){
-		time[3] = '0';
-		time[4] = obj.minutes + '0';
+		time += '0';
 	}
-	else{
-		time[3] = (obj.minutes / 10) + '0';
-		time[4] = (obj.minutes % 10) + '0';
-	}
+	time += std::to_string(obj.minutes);
 
-	time[5] = kTimeDelimiter;
+	time += kTimeDelimiter;
 
 	if(obj.seconds < 10){
-		time[6] = '0';
-		time[7] = obj.seconds + '0';
+		time += '0';
 	}
-	else{
-		time[6] = (obj.seconds / 10) + '0';
-		time[7] = (obj.seconds % 10) + '0';
-	}
+	time += std::to_string(obj.seconds);
 
 	return time;
 }
