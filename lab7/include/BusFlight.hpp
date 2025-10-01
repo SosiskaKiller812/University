@@ -46,7 +46,7 @@ public:
 	}
 
 	BusFlight &operator=(const BusFlight &obj);
-	BusFlight(const BusFlight &other);
+	BusFlight(const BusFlight &other) = default;
 	~BusFlight();
 
 
