@@ -99,8 +99,10 @@ void addFlight(BusFlight *&buses, int &count){
 }
 
 BusFlight *getFlightsByDepartureTime(const BusFlight *buses, const int count, Time time, int &newSize){
-	if(buses == nullptr || count <= 0)
+	if(buses == nullptr || count <= 0){
+		newSize = 0;
 		return nullptr;
+	}
 
 	newSize = 0;
 	for(int i = 0; i < count; i++){
@@ -109,23 +111,18 @@ BusFlight *getFlightsByDepartureTime(const BusFlight *buses, const int count, Ti
 		}
 	}
 
-	if(newSize == 0)
+	if(newSize == 0){
 		return nullptr;
+	}
 
-	auto result = new BusFlight[newSize];
-
+	BusFlight *result = new BusFlight[newSize];
 	int index = 0;
 	for(int i = 0; i < count; i++){
 		if(buses[i].getDepartureTime() == time){
-			if(index > newSize){
-				auto newResult = new BusFlight[index];
-				for(int j = 0; j < newSize; j++){
-					newResult[j] = result[j];
-				}
-				delete[] result;
-				result = newResult;
+			if(index < newSize){
+				result[index] = buses[i];
+				index++;
 			}
-			result[index++] = BusFlight(buses[i]);
 		}
 	}
 
