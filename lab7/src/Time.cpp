@@ -31,8 +31,6 @@ std::string createStringTime(const Time &obj){
 	return time;
 }
 
-Time &Time::operator=(const Time &obj) = default;
-
 bool Time::operator==(const Time &obj) const{
 	if(hours == obj.hours && minutes == obj.minutes && seconds == obj.seconds) return true;
 	return false;
@@ -49,14 +47,4 @@ Time Time::fillTimeByConsole(){
 	inputInt(seconds, 0, kMaxSeconds);
 
 	return Time(hours, minutes, seconds);
-}
-
-Time::Time(const Time &other)
-	: hours(other.hours), minutes(other.minutes), seconds(other.seconds){
-}
-
-Time::~Time(){
-	hours = 0;
-	minutes = 0;
-	seconds = 0;
 }

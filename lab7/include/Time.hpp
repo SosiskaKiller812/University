@@ -12,9 +12,9 @@ private:
 public:
 	Time() : hours(0), minutes(0), seconds(0){};
 	explicit Time(int h, int m = 0, int s = 0) : hours(h), minutes(m), seconds(s){};
-	Time(const Time& other);
-	Time &operator=(const Time &obj);
-	~Time();
+	Time(const Time& other) = default;
+	Time &operator=(const Time &obj) = default;
+	~Time() = default;
 	bool operator==(const Time &obj) const;
 
 	friend std::ostream &operator<<(std::ostream &os, const Time &obj){
