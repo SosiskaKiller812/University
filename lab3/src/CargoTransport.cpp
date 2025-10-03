@@ -1,7 +1,6 @@
 #include "CargoTransport.hpp"
 #include "String.hpp"
 
-
 CargoTransport::CargoTransport(double price, double speed, String transportName) : PricaPk(price), kmPh(speed), name(transportName){}
 
 double CargoTransport::getKmph() const{
