@@ -27,11 +27,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y qt6-base-dev
 
-
-
-
-
-
       - name: Build lab8
         run: |
           rm -rf lab8/build
@@ -45,9 +40,6 @@ jobs:
           mkdir coursework3sem/build
           cmake -S coursework3sem -B coursework3sem/build 
           build-wrapper-linux-x86-64 --out-dir coursework3sem/build_wrapper cmake --build coursework3sem/build --config Release
-
-
-    
 
       - name: SonarCloud scan lab8
         uses: SonarSource/sonarqube-scan-action@v4
