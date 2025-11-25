@@ -12,7 +12,7 @@ double Carriage::getTime(double distance, int persons, double extraWeight) const
 		return 0.0;
 	}
 
-	double fatiguePerKm = 0.05 * (extraWeight + persons * kAvgPeopleWeight) / kCarriageMaxKilos;
+	double fatiguePerKm = 0.015 * (extraWeight + persons * kAvgPeopleWeight) / kCarriageMaxKilos;
 	double fatigueRate = 1.0 + (distance * fatiguePerKm);
 
 	return distance / kCarriageSpeed * fatigueRate;

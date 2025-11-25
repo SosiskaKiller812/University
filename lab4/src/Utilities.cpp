@@ -20,7 +20,7 @@ void getTransportTime(const Transport *transport){
 	double distance = getDistance();
 	int persons = getPersonsAmount(transport);
 	double extraWeight = getExtraWeight(transport);
-	cout << transport->getTime(distance, persons, extraWeight) << " minutes" << endl;
+	cout << transport->getTime(distance, persons, extraWeight) << " hours" << endl;
 }
 
 void getTransportCost(const Transport *transport){
@@ -47,7 +47,7 @@ int getPersonsAmount(const Transport *transport){
 double getExtraWeight(const Transport *transport){
 	cout << "Enter extra weight(" << transport->getMaxWeight() << " kg include persons):" << endl;
 	double weight;
-	inputDouble(weight, 1, transport->getMaxWeight());
+	inputDouble(weight, 0, transport->getMaxWeight());
 	return weight;
 }
 

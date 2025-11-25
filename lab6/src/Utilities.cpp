@@ -5,6 +5,7 @@
 #include "String.hpp"
 #include "LinkedList.hpp"
 #include "CargoTransport.hpp"
+#include <DistanceException.hpp>
 
 using namespace std;
 
@@ -38,9 +39,9 @@ double getDistance(LinkedList &cities){
 			return node->data;
 		}
 
-		throw invalid_argument("Expected city or distance");
+		throw DistanceException("Expected city or distance");
 	}
-	catch(invalid_argument &exc){
+	catch(DistanceException &exc){
 		cout << exc.what() << endl;
 		cout << "City '";
 		print(city);

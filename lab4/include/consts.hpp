@@ -12,9 +12,9 @@ const String kCarriageName{"Carriage"};
 const int kCarriageMaxPeoples = 4;
 const double kCarriageSpeed = 10;
 const double kCarriagePricePh = 40;
-const double kCarriagePricePk = 5;
+const double kCarriagePricePk = 10;
 const double kCarriageMaxKilos = 400;
-const double kCarriageFeePerKm = 0.1;
+const double kCarriageFeePerKm = 1;
 
 const String kCarName {"Car"};
 const int kCarMaxPeoples = 4;

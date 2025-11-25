@@ -8,4 +8,3 @@ int main(){
 	startWorkWithStack();
 	return 0;
 }
-
