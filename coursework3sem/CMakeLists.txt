@@ -1,16 +1,12 @@
 cmake_minimum_required(VERSION 3.16)
-project(BusStationInfoSystem LANGUAGES CXX)
+project(BusStationInfoSystem VERSION 0.1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets)
-qt_standard_project_setup()
+include_directories(include)
 
-include_directories(${CMAKE_SOURCE_DIR}/include)
-
-add_executable(BusStationInfoSystem
-    # Основные файлы
+set(SOURCES
     src/main.cpp
     src/mainwindow.cpp
     src/mainmenu.cpp
@@ -22,7 +18,7 @@ add_executable(BusStationInfoSystem
     src/editroutedialog.cpp
     src/routedialog.cpp
     src/routedetailsdialog.cpp
-    
+
     # Новые классы - базовые
     src/passenger.cpp
     src/ticket.cpp
@@ -31,28 +27,29 @@ add_executable(BusStationInfoSystem
     src/seat.cpp
     src/booking.cpp
     src/payment.cpp
-    
+
     # Система скидок
     src/discount.cpp
     src/studentdiscount.cpp
     src/seniordiscount.cpp
     src/childdiscount.cpp
-    
+
     # Контейнерные классы
     src/ticketoffice.cpp
     src/schedule.cpp
-    
+
     # Утилитные классы
     src/pricecalculator.cpp
     src/routefinder.cpp
     src/ticketvalidator.cpp
     src/reportgenerator.cpp
-    
+
     # Служебные классы
     src/logger.cpp
     src/configmanager.cpp
-    
-    # Заголовочные файлы
+)
+
+set(HEADERS
     include/mainwindow.h
     include/filedatabase.h
     include/route.h
@@ -66,9 +63,9 @@ add_executable(BusStationInfoSystem
     include/routedetailsdialog.h
     include/iserializable.h
     include/DatabaseException.h
-    include/RouteException.h 
+    include/RouteException.h
     include/ValidationException.h
-    
+
     # Новые заголовочные файлы
     include/passenger.h
     include/ticket.h
@@ -92,7 +89,7 @@ add_executable(BusStationInfoSystem
     include/configmanager.h
 )
 
-target_link_libraries(BusStationInfoSystem PRIVATE Qt6::Widgets)
+add_executable(BusStationInfoSystem ${SOURCES} ${HEADERS})
 
-# Copy data folder into build dir
+# Копирование папки data в build
 file(COPY ${CMAKE_SOURCE_DIR}/data DESTINATION ${CMAKE_BINARY_DIR})
